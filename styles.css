@@ -1,0 +1,42 @@
+#cool_tooltip {
+  z-index: 2;
+  bottom: 5.25em;
+  padding: 3px;
+  display: flex;
+  margin: 0 auto;
+  width: fit-content;
+  min-width: 100px;
+  position: relative;
+  user-select: none;
+  border-radius: 4px;
+  border: 1px solid var(--background-modifier-border);
+  justify-content: space-around;
+  background-color: var(--background-primary);
+  box-shadow: 0px 3px 25px rgba( 31, 38, 135, 0.1 );
+}
+  
+#cool_tooltip span{
+  display: flex;
+  padding: 4px;
+}
+
+#cool_tooltip div {
+  margin: 2px;
+  margin-right: 3px;
+  margin-left: 3px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 3px;
+  transition: 250ms ease-in-out;
+  background-color: var(--background-primary-alt);
+}
+  
+#cool_tooltip div:hover {
+  background-color: var(--background-secondary);
+}
+
+#cool_tooltip div svg{
+  height: 1.3em;
+  width: 1.3em;
+  fill: var(--text-normal);
+}
