@@ -16,8 +16,10 @@
 }
   
 #cool_tooltip span{
-  display: flex;
   padding: 4px;
+  display: flex;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #cool_tooltip div {
