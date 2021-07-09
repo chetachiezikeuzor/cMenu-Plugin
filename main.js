@@ -189,8 +189,6 @@ class cMenuPopover extends obsidian.Plugin{
     }
     
     createMenu(){
-        var activeLeaf = this.app.workspace.activeLeaf;
-
         const applyCommand = (prefix, selectedText, suffix) => {
             suffix = suffix || prefix;
             return `${prefix}${selectedText}${suffix}`;
@@ -236,6 +234,7 @@ class cMenuPopover extends obsidian.Plugin{
                     tool_tip.appendChild(typeSection);
     
                     typeSection.addEventListener('click', () => {
+                        var activeLeaf = this.app.workspace.activeLeaf;
                         if(app.workspace.activeLeaf.view.editor){
                             var sel = activeLeaf.view.editor.getSelection();
                             if(sel){
@@ -250,7 +249,16 @@ class cMenuPopover extends obsidian.Plugin{
                 }
             );
         };
-        generateMenu();
+        if(app.workspace.activeLeaf.view.editor){
+            let tool_tip = document.getElementById('cool_tooltip');
+            if(tool_tip){
+                return;
+            }else{
+                generateMenu();
+            }
+        }else if(!app.workspace.activeLeaf.view.editor){
+            selfDestruct();
+        }
     };
 }
 class SettingsTab extends obsidian.PluginSettingTab {
@@ -290,12 +298,11 @@ class cMenuPlugin extends obsidian.Plugin {
                 const activeLeaf = this.app.workspace.activeLeaf;
                 const view = activeLeaf.view;
                 const editor = view.editor;
-                selfDestruct();
                 this.cMenuPopover = new cMenuPopover(activeLeaf, editor, this.app, this);
-                
             }else{
                 selfDestruct(); 
             }
+            
         });
         
     }
@@ -308,7 +315,6 @@ class cMenuPlugin extends obsidian.Plugin {
             this.addSettingTab(new SettingsTab(this.app, this));
 
             this.registerEvent(this.app.workspace.on("active-leaf-change", this.handlecMenu));
-
 
         });
     }

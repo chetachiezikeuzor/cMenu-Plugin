@@ -1,5 +1,5 @@
 #cool_tooltip {
-  z-index: 3;
+  z-index: var(--layer-status-bar);
   bottom: 5.25em;
   padding: 3px;
   display: flex;
