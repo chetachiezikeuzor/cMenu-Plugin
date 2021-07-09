@@ -1,4 +1,4 @@
-#cool_tooltip {
+#cMenuModalBar {
   z-index: var(--layer-status-bar);
   bottom: 5.25em;
   padding: 3px;
@@ -15,14 +15,14 @@
   box-shadow: 0px 3px 25px rgba( 31, 38, 135, 0.1 );
 }
   
-#cool_tooltip span{
+#cMenuModalBar span{
   padding: 4px;
   display: flex;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#cool_tooltip div {
+#cMenuModalBar div {
   margin: 2px;
   margin-right: 3px;
   margin-left: 3px;
@@ -33,11 +33,11 @@
   background-color: var(--background-primary-alt);
 }
   
-#cool_tooltip div:hover {
+#cMenuModalBar div:hover {
   background-color: var(--background-secondary);
 }
 
-#cool_tooltip div svg{
+#cMenuModalBar div svg{
   height: 1.3em;
   width: 1.3em;
   fill: var(--text-normal);

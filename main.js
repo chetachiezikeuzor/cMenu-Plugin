@@ -174,11 +174,11 @@ const DEFAULT_SETTINGS = {
 };
 
 function selfDestruct(){
-    let tool_tip = document.getElementById('cool_tooltip');
-    if(tool_tip){
-        if(tool_tip.firstChild){
-            tool_tip.removeChild(tool_tip.firstChild);
-        }tool_tip.remove();
+    let cMenuModalBar = document.getElementById('cMenuModalBar');
+    if(cMenuModalBar){
+        if(cMenuModalBar.firstChild){
+            cMenuModalBar.removeChild(cMenuModalBar.firstChild);
+        }cMenuModalBar.remove();
     }
 }
 
@@ -219,9 +219,9 @@ class cMenuPopover extends obsidian.Plugin{
         };
 
         const generateMenu = () => {
-            let tool_tip = document.createElement('div'); 
-            tool_tip.setAttribute('id', 'cool_tooltip'); 
-            document.body.appendChild(tool_tip); 
+            let cMenuModalBar = document.createElement('div'); 
+            cMenuModalBar.setAttribute('id', 'cMenuModalBar'); 
+            document.body.appendChild(cMenuModalBar); 
             Object.keys(commandsMap).forEach(
                 (type) => {
                     // Create menu based on `${type}-glyph`
@@ -231,7 +231,7 @@ class cMenuPopover extends obsidian.Plugin{
                     typeIcon.innerHTML = iconsMap[`${type}-glyph`];
                     typeSection.appendChild(typeIcon);
     
-                    tool_tip.appendChild(typeSection);
+                    cMenuModalBar.appendChild(typeSection);
     
                     typeSection.addEventListener('click', () => {
                         var activeLeaf = this.app.workspace.activeLeaf;
@@ -240,18 +240,18 @@ class cMenuPopover extends obsidian.Plugin{
                             if(sel){
                                 activeLeaf.view.editor.replaceSelection(commandsMap[type](sel));
                             }else{
-                                console.log("you are not in editor mode");
+                                console.log("This view is not edittable 😬");
                             }
                         }else{
-                            console.log("you are not in editor mode");
+                            console.log("This view is not edittable 😬");
                         }
                     });
                 }
             );
         };
         if(app.workspace.activeLeaf.view.editor){
-            let tool_tip = document.getElementById('cool_tooltip');
-            if(tool_tip){
+            let cMenuModalBar = document.getElementById('cMenuModalBar');
+            if(cMenuModalBar){
                 return;
             }else{
                 generateMenu();
@@ -261,6 +261,7 @@ class cMenuPopover extends obsidian.Plugin{
         }
     };
 }
+
 class SettingsTab extends obsidian.PluginSettingTab {
     constructor(app, plugin) {
         super(app, plugin);
@@ -294,15 +295,10 @@ class cMenuPlugin extends obsidian.Plugin {
         super(...arguments);
 
         this.handlecMenu = obsidian.debounce(() => {
-            if(app.workspace.activeLeaf.view.editor){
-                const activeLeaf = this.app.workspace.activeLeaf;
-                const view = activeLeaf.view;
-                const editor = view.editor;
-                this.cMenuPopover = new cMenuPopover(activeLeaf, editor, this.app, this);
-            }else{
-                selfDestruct(); 
-            }
-            
+            const activeLeaf = this.app.workspace.activeLeaf;
+            const view = activeLeaf.view;
+            const editor = view.editor;
+            this.cMenuPopover = new cMenuPopover(activeLeaf, editor, this.app, this);
         });
         
     }
@@ -315,7 +311,6 @@ class cMenuPlugin extends obsidian.Plugin {
             this.addSettingTab(new SettingsTab(this.app, this));
 
             this.registerEvent(this.app.workspace.on("active-leaf-change", this.handlecMenu));
-
         });
     }
     onunload() {
