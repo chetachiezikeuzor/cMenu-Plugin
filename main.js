@@ -197,7 +197,7 @@ class cMenuPopover extends obsidian.Plugin{
         const commandsMap = {
             bold: (selectedText) => applyCommand('**', selectedText),
             italic: (selectedText) => applyCommand('_', selectedText),
-            strikethrough: (selectedText) => applyCommand('<s>', selectedText, '</s>'),
+            strikethrough: (selectedText) => applyCommand('~~', selectedText),
             underline: (selectedText) => applyCommand('<u>', selectedText, '</u>'),
             superscript: (selectedText) => applyCommand('<sup>', selectedText, '</sup>'),
             subscript: (selectedText) => applyCommand('<sub>', selectedText, '</sub>'),
