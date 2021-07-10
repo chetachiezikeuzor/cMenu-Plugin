@@ -1,14 +1,15 @@
 #cMenuModalBar {
   z-index: var(--layer-status-bar);
-  bottom: 5.25em;
+  bottom: 3em;
   padding: 3px;
-  display: flex;
+  display: grid;
   margin: 0 auto;
   width: fit-content;
   min-width: 100px;
-  position: relative;
+  position: sticky;
   user-select: none;
   border-radius: 6px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   border: 1px solid var(--background-modifier-border);
   justify-content: space-around;
   background-color: var(--background-primary);
@@ -16,10 +17,8 @@
 }
   
 #cMenuModalBar span{
-  padding: 4px;
+  padding: 5px;
   display: flex;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 #cMenuModalBar div {
