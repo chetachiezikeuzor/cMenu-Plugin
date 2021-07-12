@@ -240,10 +240,10 @@ class cMenuPopover extends obsidian.Plugin{
                             if(sel){
                                 activeLeaf.view.editor.replaceSelection(commandsMap[type](sel));
                             }else{
-                                console.log("This view is not edittable 😬");
+                                console.log("This is not edittable 😬");
                             }
                         }else{
-                            console.log("This view is not edittable 😬");
+                            console.log("This is not edittable 😬");
                         }
                     });
                 }
