@@ -5,7 +5,7 @@ a[href="https://www.buymeacoffee.com/chetachi"] > img
 
 #cMenuModalBar {
   z-index: var(--layer-status-bar);
-  bottom: 4em;
+  bottom: 5em;
   padding: 3px;
   display: grid;
   margin: 0 auto;
