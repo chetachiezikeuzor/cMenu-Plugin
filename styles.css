@@ -1,6 +1,11 @@
+a[href="https://www.buymeacoffee.com/chetachi"] > img
+{
+  height: 2.5em;
+}
+
 #cMenuModalBar {
   z-index: var(--layer-status-bar);
-  bottom: 3em;
+  bottom: 4em;
   padding: 3px;
   display: grid;
   margin: 0 auto;
@@ -13,10 +18,10 @@
   border: 1px solid var(--background-modifier-border);
   justify-content: space-around;
   background-color: var(--background-primary);
-  box-shadow: 0px 3px 25px rgba( 31, 38, 135, 0.1 );
+  box-shadow: 0px 3px 25px rgba(31, 38, 135, 0.1);
 }
-  
-#cMenuModalBar span{
+
+#cMenuModalBar span {
   padding: 5px;
   display: flex;
 }
@@ -31,13 +36,20 @@
   transition: 250ms ease-in-out;
   background-color: var(--background-primary-alt);
 }
-  
+
 #cMenuModalBar div:hover {
   background-color: var(--background-secondary);
 }
 
-#cMenuModalBar div svg{
+#cMenuModalBar div svg {
   height: 1.3em;
   width: 1.3em;
   fill: var(--text-normal);
+}
+
+.cMenuDonation {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--text-normal);
 }
