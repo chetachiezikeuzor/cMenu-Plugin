@@ -50,8 +50,6 @@ var en: langPlot = {
     "If you like this Plugin and are considering donating to support continued development, use the button below!",
   "Created with ❤️ by Chetachi": "Created with ❤️ by Chetachi",
 
-  Miscellaneous: "Miscellaneous",
-
   //cMenuModal
 };
 
