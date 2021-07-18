@@ -39,7 +39,7 @@ var en: langPlot = {
   "cMenu Settings": "cMenu Settings",
   "Click ": "Click ",
   here: "here",
-  "Pick cMenu Position Style": "Pick cMenu Position Style",
+  "Add New cMenu Command": "Add New cMenu Command",
   "Coming soon...": "Coming soon...",
   "Click Here": "Click Here",
   "More Information": "More Information",
@@ -273,11 +273,11 @@ class SettingsTab extends obsidian.PluginSettingTab {
     containerEl.empty();
     containerEl.createEl("h2", { text: t("cMenu Settings") });
     new obsidian.Setting(containerEl)
-      .setName(t("Pick cMenu Position Style"))
+      .setName(t("Add New cMenu Command"))
       .setDesc(t("Coming soon..."));
 
     const div = containerEl.createEl("div", {
-      cls: "cMenuDonation",
+      cls: "cDonationSection",
     });
 
     const credit = document.createElement("p");
