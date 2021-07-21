@@ -39,7 +39,7 @@ var en: langPlot = {
   "cMenu Settings": "cMenu Settings",
   "Click ": "Click ",
   here: "here",
-  "Add New cMenu Command": "Add New cMenu Command",
+  "Pick cMenu Positioning": "Pick cMenu Positioning",
   "Coming soon...": "Coming soon...",
   "Click Here": "Click Here",
   "More Information": "More Information",
@@ -273,7 +273,7 @@ class SettingsTab extends obsidian.PluginSettingTab {
     containerEl.empty();
     containerEl.createEl("h2", { text: t("cMenu Settings") });
     new obsidian.Setting(containerEl)
-      .setName(t("Add New cMenu Command"))
+      .setName(t("Pick cMenu Positioning"))
       .setDesc(t("Coming soon..."));
 
     const div = containerEl.createEl("div", {
@@ -306,7 +306,6 @@ class SettingsTab extends obsidian.PluginSettingTab {
 const createDonateButton = (link: string): HTMLElement => {
   const a = document.createElement("a");
   a.setAttribute("href", link);
-  a.addClass("advanced-tables-donate-button");
   a.innerHTML = `<img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=chetachi&button_colour=e3e7ef&font_colour=262626&font_family=Inter&outline_colour=262626&coffee_colour=ff0000">`;
   return a;
 };
