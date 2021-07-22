@@ -1,10 +1,10 @@
 {
-	"id": "cMenu-Plugin",
-	"name": "cMenu Plugin",
-	"version": "1.0.1",
-	"minAppVersion": "0.9.12",
-	"description": "This is a simple text formatter plugin for the Obsidian note-taking tool.",
-	"author": "chetachi",
-	"authorUrl": "https://github.com/chetachiezikeuzor",
-	"isDesktopOnly": true
+  "id": "cMenu-Plugin",
+  "name": "cMenu",
+  "version": "1.0.1",
+  "minAppVersion": "0.9.12",
+  "description": "cMenu is a plugin that adds a minimal text editor modal for a smoother writing/editing experience ✍🏽.",
+  "author": "chetachi",
+  "authorUrl": "https://github.com/chetachiezikeuzor",
+  "isDesktopOnly": true
 }

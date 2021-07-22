@@ -1,7 +1,7 @@
 {
   "name": "cmenu-plugin",
   "version": "0.12.0",
-  "description": "This is a simple text formatter plugin for the Obsidian note-taking tool.",
+  "description": "cMenu is a plugin that adds a minimal text editor modal for a smoother writing/editing experience ✍🏽.",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
