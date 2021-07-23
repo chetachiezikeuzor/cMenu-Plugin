@@ -25,13 +25,13 @@ Each button on cMenu stores a command that finds your selected, and wraps it wit
 
 ## Installation
 
-This plugin will be available in the community plugin browser in Obsidian after review. For a manual installation, you can download the necessary files and place them within your plugin folder.
+This plugin will be available in the community plugin browser in Obsidian after review. For a manual installation, you can download the necessary files and place them within your plugins folder.
 
 ---
 
 ## Support
 
-If you like this Plugin and are considering donating to support continued development, use the button below!
+If you like this plugin and are considering donating to support continued development, use the button below!
 
 Created with ❤️ by Chetachi
 
