@@ -133,7 +133,7 @@ class SettingsTab extends obsidian.PluginSettingTab {
     containerEl.empty();
     containerEl.createEl("h2", { text: "cMenu Settings" });
     new obsidian.Setting(containerEl)
-      .setName("Pick cMenu Positioning")
+      .setName("cMenu Positioning")
       .setDesc("Coming soon...");
 
     const div = containerEl.createEl("div", {
