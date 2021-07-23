@@ -1,6 +1,6 @@
 {
   "name": "cmenu-plugin",
-  "version": "0.12.0",
+  "version": "0.0.1",
   "description": "cMenu is a plugin that adds a minimal text editor modal for a smoother writing/editing experience ✍🏽.",
   "main": "main.js",
   "scripts": {
