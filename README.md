@@ -8,7 +8,7 @@ cMenu is a plugin that adds a minimal and user friendly text editor modal for a 
 
 ## Demo
 
-![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu-demo.gif)
+![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu.gif)
 
 ## Ease of Use
 
