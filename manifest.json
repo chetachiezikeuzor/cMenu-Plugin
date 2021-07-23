@@ -1,8 +1,8 @@
 {
   "id": "cMenu-Plugin",
   "name": "cMenu",
-  "version": "1.0.1",
-  "minAppVersion": "0.9.12",
+  "version": "0.0.1",
+  "minAppVersion": "0.12.8",
   "description": "cMenu is a plugin that adds a minimal text editor modal for a smoother writing/editing experience ✍🏽.",
   "author": "chetachi",
   "authorUrl": "https://github.com/chetachiezikeuzor",
