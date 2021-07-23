@@ -5,147 +5,6 @@ import { __awaiter } from "tslib";
 
 var obsidian = require("obsidian");
 
-/**
- * Transform the case in `value` (`string`) to match that of `base` (`string`).
- *
- * @param {string} value
- * @param {string} base
- * @returns {string}
- */
-
-type langPlot = {
-  [key: string]: string;
-};
-
-// العربية
-var ar: langPlot = {};
-
-// čeština
-var cz: langPlot = {};
-
-// Dansk
-var da: langPlot = {};
-
-// Deutsch
-var de: langPlot = {};
-
-// English
-var en: langPlot = {
-  //main
-  //_constants.ts
-  cMenu: "cMenu",
-  //added to Context Menu
-  //settingsTab.ts
-  "cMenu Settings": "cMenu Settings",
-  "Click ": "Click ",
-  here: "here",
-  "Pick cMenu Positioning": "Pick cMenu Positioning",
-  "Coming soon...": "Coming soon...",
-  "Click Here": "Click Here",
-  "More Information": "More Information",
-  "View Information about the Plugin.": "View Information about the Plugin.",
-  "More Info": "More Info",
-  Donate: "Donate",
-  "If you like this Plugin and are considering donating to support continued development, use the button below!":
-    "If you like this Plugin and are considering donating to support continued development, use the button below!",
-  "Created with ❤️ by Chetachi": "Created with ❤️ by Chetachi",
-
-  //cMenuModal
-};
-
-// British English
-var enGB: langPlot = {};
-
-// Español
-var es: langPlot = {};
-
-// français
-var fr: langPlot = {};
-
-// हिन्दी
-var hi: langPlot = {};
-
-// Bahasa Indonesia
-var id: langPlot = {};
-
-// Italiano
-var it: langPlot = {};
-
-// 日本語
-var ja: langPlot = {};
-
-// 한국어
-var ko: langPlot = {};
-
-// Nederlands
-var nl: langPlot = {};
-
-// Norsk
-var no: langPlot = {};
-
-// język polski
-var pl: langPlot = {};
-
-// Português
-var pt: langPlot = {};
-
-// Português do Brasil
-// Brazilian Portuguese
-var ptBR: langPlot = {};
-
-// Română
-var ro: langPlot = {};
-
-// русский
-var ru: langPlot = {};
-
-// Türkçe
-var tr: langPlot = {};
-
-// 简体中文
-var zhCN: langPlot = {};
-
-// 繁體中文
-var zhTW: langPlot = {};
-
-type localePlot = {
-  [key: string]: langPlot;
-};
-
-const localeMap: localePlot = {
-  ar,
-  cs: cz,
-  da,
-  de,
-  en,
-  "en-gb": enGB,
-  es,
-  fr,
-  hi,
-  id,
-  it,
-  ja,
-  ko,
-  nl,
-  nn: no,
-  pl,
-  pt,
-  "pt-br": ptBR,
-  ro,
-  ru,
-  tr,
-  "zh-cn": zhCN,
-  "zh-tw": zhTW,
-};
-
-const locale = localeMap[obsidian.moment.locale()];
-function t(str: string) {
-  if (!locale) {
-    console.error("Error: locale not found", obsidian.moment.locale());
-  }
-  return (locale && locale[str]) || en[str];
-}
-
 interface MyPluginSettings {
   mySetting: string;
 }
@@ -272,10 +131,10 @@ class SettingsTab extends obsidian.PluginSettingTab {
   display() {
     const { containerEl, plugin } = this;
     containerEl.empty();
-    containerEl.createEl("h2", { text: t("cMenu Settings") });
+    containerEl.createEl("h2", { text: "cMenu Settings" });
     new obsidian.Setting(containerEl)
-      .setName(t("Pick cMenu Positioning"))
-      .setDesc(t("Coming soon..."));
+      .setName("Pick cMenu Positioning")
+      .setDesc("Coming soon...");
 
     const div = containerEl.createEl("div", {
       cls: "cDonationSection",
@@ -284,11 +143,9 @@ class SettingsTab extends obsidian.PluginSettingTab {
     const credit = document.createElement("p");
     const donateText = document.createElement("p");
     donateText.appendText(
-      t(
-        "If you like this Plugin and are considering donating to support continued development, use the button below!"
-      )
+      "If you like this Plugin and are considering donating to support continued development, use the button below!"
     );
-    credit.appendText(t("Created with ❤️ by Chetachi"));
+    credit.appendText("Created with ❤️ by Chetachi");
     credit.setAttribute("style", "color: var(--text-muted)");
     div.appendChild(donateText);
     div.appendChild(credit);
