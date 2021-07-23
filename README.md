@@ -4,13 +4,30 @@
 
 ### Disclaimer: This plugin is **not** ready for use
 
+cMenu is a plugin that adds a minimal and user friendly text editor modal for a smoother writing/editing experience ✍🏽. This plugin makes text editing easier for those that don't wish to configure a multitude of hotkeys.
+
+## Demo
+
 https://user-images.githubusercontent.com/79069364/124989935-5296b980-e005-11eb-8957-32d3f08da200.mp4
+
+## Ease of Use
+
+This plugin was specifically designed for note-takers that want to have a simple text editor to aid in marking up their notes. cMenu solves the issue of having to memorize numerous hotkeys and/or use multiple key presses to get the desired markup. When you use cMenu, you'll only have to focus on writing!
+
+## How it Works
+
+Currently, cMenu only works on text that had been selected.
+Each button on cMenu stores a command that finds your selected, and wraps it within your chosen markup. This makes things like creating codeblocks or blockquotes much easier to do. cMenu is also a standalone component, which makes your workspace much cleaner to write in with minimal clutter. To append cMenu onto your worspace, simply enable the plugin. To remove cMenu from your workspace, disable it.
 
 ![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu.png)
 
 ## Use Case
 
 https://user-images.githubusercontent.com/79069364/125166595-f85f3b00-e161-11eb-845e-58c2479f2812.mp4
+
+## Installation
+
+This plugin will be available in the community plugin browser in Obsidian after review. For a manual installation, you can download the necessary files and place them within your plugin folder.
 
 ---
 
