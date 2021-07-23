@@ -1,5 +1,7 @@
 # cMenu Plugin
 
+![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu%20Demo%20Header.png)
+
 ### Disclaimer: This plugin is **not** ready for use
 
 https://user-images.githubusercontent.com/79069364/124989935-5296b980-e005-11eb-8957-32d3f08da200.mp4
@@ -12,7 +14,7 @@ https://user-images.githubusercontent.com/79069364/125166595-f85f3b00-e161-11eb-
 
 ---
 
-## Support 
+## Support
 
 If you like this Plugin and are considering donating to support continued development, use the button below!
 
