@@ -1,5 +1,8 @@
 # cMenu Plugin
 
+![cMenu-Plugin Downloads](https://img.shields.io/github/downloads/chetachiezikeuzor/cMenu-Plugin/total.svg) 
+![cMenu-Plugin Releases](https://img.shields.io/github/v/release/chetachiezikeuzor/cMenu-Plugin)
+
 ![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu%20Demo%20Header.png)
 
 ### Disclaimer: This plugin is **not** ready for public use
