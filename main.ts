@@ -1,15 +1,10 @@
-import { App, Setting, WorkspaceLeaf } from "obsidian";
-import { __awaiter } from "tslib";
+import { App, Plugin, MarkdownView, PluginSettingTab, Setting } from "obsidian";
 
-("use strict");
-
-var obsidian = require("obsidian");
-
-interface MyPluginSettings {
+interface cMenuSettings {
   mySetting: string;
 }
 
-const DEFAULT_SETTINGS: MyPluginSettings = {
+const DEFAULT_SETTINGS: cMenuSettings = {
   mySetting: "default",
 };
 
@@ -23,13 +18,8 @@ function selfDestruct() {
   }
 }
 
-class cMenuPopover extends obsidian.Plugin {
-  constructor(activeLeaf: WorkspaceLeaf) {
-    super(activeLeaf);
-    this.createMenu();
-  }
-
-  createMenu() {
+function cMenuPopover(app: App): void {
+  function createMenu() {
     const applyCommand = (
       prefix: string,
       selectedText: string,
@@ -66,7 +56,7 @@ class cMenuPopover extends obsidian.Plugin {
     };
 
     const iconsMap: iconsPlot = {
-      "codeblock-glyph": `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M9 22l6-20m2 15l5-5l-5-5M7 17l-5-5l5-5"/></svg>`,
+      "codeblock-glyph": `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><title>Code Block</title><path fill="none" stroke="currentColor" stroke-width="2" d="M9 22l6-20m2 15l5-5l-5-5M7 17l-5-5l5-5"/></svg>`,
       "quote-glyph": `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><title>Quote</title><path d="M6.5 10c-.223 0-.437.034-.65.065c.069-.232.14-.468.254-.68c.114-.308.292-.575.469-.844c.148-.291.409-.488.601-.737c.201-.242.475-.403.692-.604c.213-.21.492-.315.714-.463c.232-.133.434-.28.65-.35l.539-.222l.474-.197l-.485-1.938l-.597.144c-.191.048-.424.104-.689.171c-.271.05-.56.187-.882.312c-.318.142-.686.238-1.028.466c-.344.218-.741.4-1.091.692c-.339.301-.748.562-1.05.945c-.33.358-.656.734-.909 1.162c-.293.408-.492.856-.702 1.299c-.19.443-.343.896-.468 1.336c-.237.882-.343 1.72-.384 2.437c-.034.718-.014 1.315.028 1.747c.015.204.043.402.063.539l.025.168l.026-.006A4.5 4.5 0 1 0 6.5 10zm11 0c-.223 0-.437.034-.65.065c.069-.232.14-.468.254-.68c.114-.308.292-.575.469-.844c.148-.291.409-.488.601-.737c.201-.242.475-.403.692-.604c.213-.21.492-.315.714-.463c.232-.133.434-.28.65-.35l.539-.222l.474-.197l-.485-1.938l-.597.144c-.191.048-.424.104-.689.171c-.271.05-.56.187-.882.312c-.317.143-.686.238-1.028.467c-.344.218-.741.4-1.091.692c-.339.301-.748.562-1.05.944c-.33.358-.656.734-.909 1.162c-.293.408-.492.856-.702 1.299c-.19.443-.343.896-.468 1.336c-.237.882-.343 1.72-.384 2.437c-.034.718-.014 1.315.028 1.747c.015.204.043.402.063.539l.025.168l.026-.006A4.5 4.5 0 1 0 17.5 10z"/></svg>`,
       "bold-glyph": `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><title>Bold</title><path d="M8 11h4.5a2.5 2.5 0 1 0 0-5H8v5zm10 4.5a4.5 4.5 0 0 1-4.5 4.5H6V4h6.5a4.5 4.5 0 0 1 3.256 7.606A4.498 4.498 0 0 1 18 15.5zM8 13v5h5.5a2.5 2.5 0 1 0 0-5H8z"/></svg>`,
       "italic-glyph": `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><title>Italic</title><path d="M798 160H366c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h181.2l-156 544H229c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h432c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8H474.4l156-544H798c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"/></svg>`,
@@ -78,49 +68,86 @@ class cMenuPopover extends obsidian.Plugin {
     };
 
     const generateMenu = () => {
-      let cMenuModalBar = document.createElement("div");
+      let cMenuModalBar = createEl("div");
       cMenuModalBar.setAttribute("id", "cMenuModalBar");
       document.body.appendChild(cMenuModalBar);
 
       Object.keys(commandsMap).forEach((type) => {
         // Create menu based on `${type}-glyph`
-        const typeSection = document.createElement("div");
+        const typeSection = createEl("div");
 
-        const typeIcon = document.createElement("span");
+        const typeIcon = createEl("span");
         typeIcon.innerHTML = iconsMap[`${type}-glyph`];
         typeSection.appendChild(typeIcon);
 
         cMenuModalBar.appendChild(typeSection);
 
         typeSection.addEventListener("click", () => {
-          var activeLeaf = this.app.workspace.activeLeaf;
-          if (this.app.workspace.activeLeaf.view.editor) {
-            var sel = activeLeaf.view.editor.getSelection();
-            if (sel) {
-              activeLeaf.view.editor.replaceSelection(commandsMap[type](sel));
+          var activeLeaf = app.workspace.activeLeaf;
+          if (activeLeaf?.view instanceof MarkdownView) {
+            const view = activeLeaf.view;
+            const editor = view.editor;
+            const selection = editor.getSelection();
+            if (selection) {
+              editor.replaceSelection(commandsMap[type](selection));
             } else {
-              console.log("This is not edittable 😬");
+              return;
             }
           } else {
-            console.log("This is not edittable 😬");
+            return;
           }
         });
       });
     };
-    if (this.app.workspace.activeLeaf.view.editor) {
+    if (app.workspace.getActiveViewOfType(MarkdownView)) {
       let cMenuModalBar = document.getElementById("cMenuModalBar");
       if (cMenuModalBar) {
         return;
       } else {
         generateMenu();
       }
-    } else if (!this.app.workspace.activeLeaf.view.editor) {
+    } else {
       selfDestruct();
     }
   }
+  createMenu();
 }
 
-class SettingsTab extends obsidian.PluginSettingTab {
+export default class cMenuPlugin extends Plugin {
+  settings: cMenuSettings;
+
+  async onload(): Promise<void> {
+    console.log("cMenu v" + this.manifest.version + " loaded");
+
+    await this.loadSettings();
+
+    this.addSettingTab(new cMenuSettingTab(this.app, this));
+
+    this.registerEvent(
+      this.app.workspace.on("active-leaf-change", this.handlecMenu)
+    );
+  }
+
+  onunload(): void {
+    selfDestruct();
+    console.log("cMenu unloaded");
+    this.app.workspace.off("active-leaf-change", this.handlecMenu);
+  }
+
+  handlecMenu = (): void => {
+    cMenuPopover(this.app);
+  };
+
+  async loadSettings() {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+  }
+
+  async saveSettings() {
+    await this.saveData(this.settings);
+  }
+}
+
+class cMenuSettingTab extends PluginSettingTab {
   plugin: cMenuPlugin;
 
   constructor(app: App, plugin: cMenuPlugin) {
@@ -128,11 +155,11 @@ class SettingsTab extends obsidian.PluginSettingTab {
     this.plugin = plugin;
   }
 
-  display() {
-    const { containerEl, plugin } = this;
+  display(): void {
+    const { containerEl } = this;
     containerEl.empty();
     containerEl.createEl("h2", { text: "cMenu Settings" });
-    new obsidian.Setting(containerEl)
+    new Setting(containerEl)
       .setName("cMenu Positioning")
       .setDesc("Coming soon...");
 
@@ -140,8 +167,8 @@ class SettingsTab extends obsidian.PluginSettingTab {
       cls: "cDonationSection",
     });
 
-    const credit = document.createElement("p");
-    const donateText = document.createElement("p");
+    const credit = createEl("p");
+    const donateText = createEl("p");
     donateText.appendText(
       "If you like this Plugin and are considering donating to support continued development, use the button below!"
     );
@@ -155,62 +182,14 @@ class SettingsTab extends obsidian.PluginSettingTab {
     );
   }
   save() {
-    return __awaiter(this, void 0, void 0, function* () {
-      yield this.plugin.saveSettings();
-    });
+    this.plugin.saveSettings();
   }
 }
 
 const createDonateButton = (link: string): HTMLElement => {
-  const a = document.createElement("a");
+  const a = createEl("a");
   a.setAttribute("href", link);
   a.addClass("buymeacoffee-chetachi-img");
   a.innerHTML = `<img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=chetachi&button_colour=e3e7ef&font_colour=262626&font_family=Inter&outline_colour=262626&coffee_colour=ff0000" height="36px">`;
   return a;
 };
-
-export default class cMenuPlugin extends obsidian.Plugin {
-  settings: MyPluginSettings;
-  constructor() {
-    super(...arguments);
-
-    this.handlecMenu = obsidian.debounce(() => {
-      const activeLeaf = this.app.workspace.activeLeaf;
-      const view = activeLeaf.view;
-      const editor = view.editor;
-      this.cMenuPopover = new cMenuPopover(activeLeaf);
-    });
-  }
-
-  async onload() {
-    return __awaiter(this, void 0, void 0, function* () {
-      console.log("Loading cMenu");
-      yield this.loadSettings();
-
-      this.addSettingTab(new SettingsTab(this.app, this));
-
-      this.registerEvent(
-        this.app.workspace.on("active-leaf-change", this.handlecMenu)
-      );
-    });
-  }
-
-  onunload() {
-    selfDestruct();
-    console.log("Unloading cMenu");
-  }
-
-  loadSettings() {
-    return __awaiter(this, void 0, void 0, function* () {
-      this.settings = Object.assign({}, DEFAULT_SETTINGS, this.loadData());
-    });
-  }
-
-  saveSettings() {
-    return __awaiter(this, void 0, void 0, function* () {
-      yield this.saveData(this.settings);
-    });
-  }
-}
-
-module.exports = cMenuPlugin;
