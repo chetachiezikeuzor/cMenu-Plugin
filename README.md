@@ -5,8 +5,6 @@
 
 ![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu%20Demo%20Header.png)
 
-### Disclaimer: This plugin is **not** ready for public use
-
 cMenu is a plugin that adds a minimal and user friendly text editor modal for a smoother writing/editing experience ✍🏽. This plugin makes text editing easier for those that don't wish to configure a multitude of hotkeys.
 
 ## Demo
@@ -28,7 +26,7 @@ Each button on cMenu stores a command that finds your selected, and wraps it wit
 
 ## Installation
 
-This plugin will be available in the community plugin browser in Obsidian after review. For a manual installation, you can download the necessary files and place them within your plugins folder.
+This plugin is now available in the community plugin browser. For a manual installation, you can download the necessary files and place them within your plugins folder.
 
 ---
 
