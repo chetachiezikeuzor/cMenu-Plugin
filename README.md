@@ -41,6 +41,8 @@ This plugin is now available in the community plugin store. You can install it f
 - Interfaces are renamed to match plugin info
 - Now uses `workspace.getActiveViewOfType(MarkdownView)` instead of `activeLeaf` for menu creation
 
+---
+
 ### [0.2.0] - Aug 02, 2021
 
 ##### Changed
