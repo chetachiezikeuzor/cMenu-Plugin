@@ -36,8 +36,6 @@ This plugin is now available in the community plugin store. You can install it f
 
 ### [0.1.0] - Jul 27, 2021
 
----
-
 #### Added
 
 #### Changed
@@ -48,8 +46,6 @@ This plugin is now available in the community plugin store. You can install it f
 #### Fixed
 
 ### [0.2.0] - Jul 27, 2021
-
----
 
 #### Added
 
