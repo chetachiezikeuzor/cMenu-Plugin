@@ -1,4 +1,13 @@
-import { App, Plugin, MarkdownView, PluginSettingTab, Setting } from "obsidian";
+import {
+  App,
+  Plugin,
+  MarkdownView,
+  PluginSettingTab,
+  Setting,
+  EditorPosition,
+  ListItemCache,
+  HeadingCache,
+} from "obsidian";
 
 interface cMenuSettings {
   mySetting: string;
@@ -70,7 +79,9 @@ function cMenuPopover(app: App): void {
     const generateMenu = () => {
       let cMenuModalBar = createEl("div");
       cMenuModalBar.setAttribute("id", "cMenuModalBar");
-      document.body.appendChild(cMenuModalBar);
+      document.body
+        .querySelector(".mod-vertical.mod-root")
+        .appendChild(cMenuModalBar);
 
       Object.keys(commandsMap).forEach((type) => {
         // Create menu based on `${type}-glyph`
@@ -83,9 +94,9 @@ function cMenuPopover(app: App): void {
         cMenuModalBar.appendChild(typeSection);
 
         typeSection.addEventListener("click", () => {
-          var activeLeaf = app.workspace.activeLeaf;
-          if (activeLeaf?.view instanceof MarkdownView) {
-            const view = activeLeaf.view;
+          var activeLeaf = app.workspace.getActiveViewOfType(MarkdownView);
+          if (activeLeaf) {
+            const view = activeLeaf;
             const editor = view.editor;
             const selection = editor.getSelection();
             if (selection) {
@@ -100,11 +111,17 @@ function cMenuPopover(app: App): void {
       });
     };
     if (app.workspace.getActiveViewOfType(MarkdownView)) {
-      let cMenuModalBar = document.getElementById("cMenuModalBar");
+      var cMenuModalBar = document.getElementById("cMenuModalBar");
       if (cMenuModalBar) {
         return;
       } else {
         generateMenu();
+        let cMenuModalBar = document.getElementById("cMenuModalBar");
+        var clientWidth = document.getElementById("cMenuModalBar").offsetWidth;
+        cMenuModalBar.setAttribute(
+          "style",
+          `left: calc(50% - calc(${clientWidth}px / 2));`
+        );
       }
     } else {
       selfDestruct();
