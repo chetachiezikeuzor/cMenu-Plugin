@@ -3,7 +3,7 @@
 ![cMenu-Plugin Downloads](https://img.shields.io/github/downloads/chetachiezikeuzor/cMenu-Plugin/total.svg)
 ![cMenu-Plugin Releases](https://img.shields.io/github/v/release/chetachiezikeuzor/cMenu-Plugin)
 
-![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu%20Demo%20Header.png)
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Demo%20Header.png)
 
 ### Status: This plugin is now available in Obsidian plugin store
 
