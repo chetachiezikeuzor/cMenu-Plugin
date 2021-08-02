@@ -34,7 +34,7 @@ This plugin is now available in the community plugin store. You can install it f
 
 ## Changelog
 
-### [0.1.0] - Jul 27, 2021
+### [0.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/0.1.0) - Jul 27, 2021
 
 ##### Changed
 
@@ -43,7 +43,7 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
-### [0.2.0] - Aug 02, 2021
+### [0.2.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/0.2.0) - Aug 02, 2021
 
 ##### Changed
 
