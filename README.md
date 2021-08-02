@@ -11,7 +11,7 @@ cMenu is a plugin that adds a minimal and user friendly text editor modal for a 
 
 ## Demo
 
-![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu.gif)
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu.gif)
 
 ## Ease of Use
 
@@ -22,9 +22,9 @@ This plugin was specifically designed for note-takers that want to have a simple
 Currently, cMenu only works on text that had been selected.
 Each button on cMenu stores a command that finds your selected, and wraps it within your chosen markup. This makes things like creating codeblocks or blockquotes much easier to do. cMenu is also a standalone component, which makes your workspace much cleaner to write in with minimal clutter. To append cMenu onto your worspace, simply enable the plugin. To remove cMenu from your workspace, disable it.
 
-![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cmenu-and-admonition.gif)
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cmenu-and-admonition.gif)
 
-![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu.png)
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu.png)
 
 ## Installation
 
