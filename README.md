@@ -53,7 +53,7 @@ This plugin is now available in the community plugin store. You can install it f
 
 - cMenu appends to `.mod-vertical.mod-root` parent instead of `body` parent.
 - cMenu left positioning is set by function that finds width dynamically on menu creation.
-  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20v0.2.0.gif)
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu-v020.gif)
 
 ---
 
