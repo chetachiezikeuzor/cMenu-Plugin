@@ -5,7 +5,7 @@
 
 ![](https://github.com/chetachiezikeuzor/cMenu-Plugin/blob/master/assets/cMenu%20Demo%20Header.png)
 
-### Disclaimer: This plugin is now available in Obsidian plugin store
+### Status: This plugin is now available in Obsidian plugin store
 
 cMenu is a plugin that adds a minimal and user friendly text editor modal for a smoother writing/editing experience ✍🏽. This plugin makes text editing easier for those that don't wish to configure a multitude of hotkeys.
 
@@ -29,6 +29,39 @@ Each button on cMenu stores a command that finds your selected, and wraps it wit
 ## Installation
 
 This plugin is now available in the community plugin store. You can install it from there and enable it. For a manual installation, you can download the necessary files and place them within your plugins folder.
+
+---
+
+## Changelog
+
+### [0.1.0] - Jul 27, 2021
+
+---
+
+#### Added
+
+#### Changed
+
+- Interfaces are renamed to match plugin info
+- Now uses `workspace.getActiveViewOfType(MarkdownView)` instead of `activeLeaf` for menu creation
+
+#### Fixed
+
+### [0.2.0] - Jul 27, 2021
+
+---
+
+#### Added
+
+#### Changed
+
+- Now uses `workspace.getActiveViewOfType(MarkdownView)` to store text selection
+
+#### Fixed
+
+- cMenu appends to `.mod-vertical.mod-root` parent instead of `body` parent.
+- cMenu left positioning is set by function that finds width dynamically on menu creation.
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20v0.2.0.gif)
 
 ---
 
