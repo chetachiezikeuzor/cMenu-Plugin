@@ -57,6 +57,14 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
+### [0.3.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/0.3.0) - Aug 02, 2021
+
+##### Fixed
+
+- Fixed small [bug](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/3#issuecomment-891371471) that causes an extra resize handle to be created.
+
+---
+
 ## Support
 
 If you like this plugin and are considering donating to support continued development, use the button below!

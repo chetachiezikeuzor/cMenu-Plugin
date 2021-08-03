@@ -81,7 +81,7 @@ function cMenuPopover(app: App): void {
       cMenuModalBar.setAttribute("id", "cMenuModalBar");
       document.body
         .querySelector(".mod-vertical.mod-root")
-        .appendChild(cMenuModalBar);
+        .insertAdjacentElement("afterbegin", cMenuModalBar);
 
       Object.keys(commandsMap).forEach((type) => {
         // Create menu based on `${type}-glyph`
