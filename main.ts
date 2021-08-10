@@ -1,13 +1,4 @@
-import {
-  App,
-  Plugin,
-  MarkdownView,
-  PluginSettingTab,
-  Setting,
-  EditorPosition,
-  ListItemCache,
-  HeadingCache,
-} from "obsidian";
+import { App, Plugin, MarkdownView, PluginSettingTab, Setting } from "obsidian";
 
 interface cMenuSettings {
   mySetting: string;
