@@ -65,6 +65,19 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
+## Roadmap
+
+- [ ] Add custom commands to cMenu
+  - [ ] Choose icons for commands without
+- [ ] Follow the cursor setting
+  - [ ] Setting to toggle for cMenu to follow mouse cursor
+- [ ] Fix to work with Sliding Panes
+  - [ ] Setting to toggle for cMenu to toggle to body instead of modroot
+- [ ] Glassmorphism setting
+  - [ ] Setting to toggle for glass effect with cMenu
+
+---
+
 ## Support
 
 If you like this plugin and are considering donating to support continued development, use the button below!

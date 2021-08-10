@@ -1,3 +1,4 @@
+.cMenuModalBar,
 #cMenuModalBar {
   bottom: 4.25em;
   padding: 3px;
@@ -22,11 +23,14 @@
   display: flex;
 }
 
+.cMenuCommandItem,
 #cMenuModalBar div {
   margin: 2px;
   margin-right: 3px;
   margin-left: 3px;
   cursor: pointer;
+  padding: unset;
+  font-size: unset;
   position: relative;
   border-radius: 3px;
   transition: 250ms ease-in-out;
