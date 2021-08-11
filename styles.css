@@ -1,54 +1,99 @@
-.cMenuModalBar,
 #cMenuModalBar {
-  bottom: 4.25em;
-  padding: 3px;
-  display: grid;
-  margin: 0 auto;
   width: auto;
   height: auto;
-  min-width: fit-content;
-  position: absolute;
+  padding: 3px;
+  bottom: 4.25em;
+  margin: 0 auto;
   user-select: none;
   border-radius: 6px;
+  position: absolute;
+  min-width: fit-content;
   justify-content: space-around;
   z-index: var(--layer-status-bar);
-  background-color: var(--background-primary);
   box-shadow: 0px 3px 25px rgb(31 38 135 / 10%);
   border: 1px solid var(--background-modifier-border);
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-#cMenuModalBar span {
-  padding: 5px;
+#cMenuModalBar .cMenuCommandItem {
+  padding: 5px 6px;
   display: flex;
+  box-shadow: none;
 }
 
-.cMenuCommandItem,
-#cMenuModalBar div {
+.cMenuCommandItem {
   margin: 2px;
-  margin-right: 3px;
-  margin-left: 3px;
+  border: none;
   cursor: pointer;
-  padding: unset;
-  font-size: unset;
+  box-shadow: none;
+  margin-left: 3px;
+  margin-right: 3px;
   position: relative;
   border-radius: 3px;
+  font-size: initial !important;
   transition: 250ms ease-in-out;
   background-color: var(--background-primary-alt);
 }
 
-#cMenuModalBar div:hover {
-  background-color: var(--background-secondary);
+#cMenuModalBar button.cMenuCommandItem:hover {
+  background-color: var(--background-secondary) !important;
 }
 
-#cMenuModalBar div svg {
-  height: 1.3em;
+#cMenuModalBar .cMenuCommandItem svg {
   width: 1.3em;
+  height: 1.3em;
   fill: var(--text-normal);
+}
+
+button.cMenuSettingsButton.cMenuSettingsButtonAdd {
+  background-color: #17ff74 !important;
+}
+
+button.cMenuSettingsButton.cMenuSettingsButtonDelete {
+  background-color: #ff2360 !important;
+}
+
+button.cMenuSettingsButton {
+  padding: 4px 14px;
+  border-radius: 6px;
+}
+
+.cMenuSettingsButton svg {
+  width: 1.3em;
+  height: 1.3em;
+  display: flex;
+}
+
+.cMenuIconPick {
+  padding: 4px;
+  vertical-align: -0.25em;
+}
+
+.cMenuIconPick svg {
+  width: 18px;
+  height: 18px;
+}
+
+.cMenuFlex {
+  display: flex;
+}
+
+.cMenuGrid {
+  display: grid;
+}
+
+.cMenuGlassAesthetic {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.cMenuDefaultAesthetic {
+  background-color: var(--background-primary);
 }
 
 .cDonationSection {
   width: 60%;
+  height: 50vh;
   margin: 0 auto;
   text-align: center;
   color: var(--text-normal);
