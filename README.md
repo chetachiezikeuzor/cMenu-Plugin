@@ -76,16 +76,32 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
+### [1.0.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.0.0) - Aug 11, 2021
+
+##### Fixed
+
+- Fixed issue with Sliding Panes with a toggle-able append method setting.
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Sliding%20Panes.gif)
+
+##### Added
+
+- Added new glass morphism setting.
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/Glass%20cMenu.gif)
+- Added new custom commands setting
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Hotkeys%20for%20Templates.gif)
+
+---
+
 ## Roadmap
 
 - [x] Add custom commands to cMenu
   - [x] Choose icons for commands without
 - [ ] Follow the cursor setting
   - [ ] Setting to toggle for cMenu to follow mouse cursor
-- [ ] Fix to work with Sliding Panes
-  - [ ] Setting to toggle for cMenu to toggle to body instead of modroot
-- [ ] Glassmorphism setting
-  - [ ] Setting to toggle for glass effect with cMenu
+- [x] Fix to work with Sliding Panes (workaround)
+  - [x] Setting to toggle for cMenu to toggle to body instead of modroot
+- [x] Glassmorphism setting
+  - [x] Setting to toggle for glass effect with cMenu
 
 ---
 
