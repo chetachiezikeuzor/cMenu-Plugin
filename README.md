@@ -19,7 +19,75 @@ This plugin was specifically designed for note-takers that want to have a simple
 
 ## How it Works
 
-With the newest update of cMenu, you can add just about any command from Obsidian's command library onto the menu bar. By default, the menu bar will have the following commands: Toggle bold, Toggle italics, Toggle strikethrough, cMenu: Toggle Underline, cMenu: Toggle Superscript, cMenu: Toggle Subscript, Toggle code, cMenu: Toggle codeblock, and Toggle blockquote. As you can see, cMenu adds four new commands to Obsidian's command library. Those commands are added to an array of commands that are then read within the generation of the cMenu modal. If you would like to remove and/or add new commands, you can do so within the cMenu settings panel. Use the green button to add a new command onto the menu. And use the red button to remove them from the menu. When you add/remove a new command, you will see a message in your console, indicating the status of said command. Now, in order to see the changes on cMenu, it's important to know that cMenu is created on the `active-leaf-change` event. This means that changes to cMenu will only take effect once you close all existing leaves and spawn a new one. This will likely change in the future as I look into a better way to do this!
+With the newest update of cMenu, you can add just about any command from Obsidian's command library onto the menu bar. By default, the menu bar will have the following commands: Toggle bold, Toggle italics, Toggle strikethrough, cMenu: Toggle Underline, cMenu: Toggle Superscript, cMenu: Toggle Subscript, Toggle code, cMenu: Toggle codeblock, and Toggle blockquote.
+
+```javascript
+"menuCommands": [
+    {
+      "id": "editor:toggle-bold",
+      "name": "Toggle bold",
+      "icon": "bold-glyph",
+      "hotkeys": [
+        {
+          "modifiers": [
+            "Mod"
+          ],
+          "key": "B"
+        }
+      ]
+    },
+    {
+      "id": "editor:toggle-italics",
+      "name": "Toggle italics",
+      "icon": "italic-glyph",
+      "hotkeys": [
+        {
+          "modifiers": [
+            "Mod"
+          ],
+          "key": "I"
+        }
+      ]
+    },
+    {
+      "id": "editor:toggle-strikethrough",
+      "name": "Toggle strikethrough",
+      "icon": "strikethrough-glyph"
+    },
+    {
+      "id": "cmenu-plugin:underline",
+      "name": "cMenu: Toggle Underline",
+      "icon": "underline-glyph"
+    },
+    {
+      "id": "cmenu-plugin:superscript",
+      "name": "cMenu: Toggle Superscript",
+      "icon": "superscript-glyph"
+    },
+    {
+      "id": "cmenu-plugin:subscript",
+      "name": "cMenu: Toggle Subscript",
+      "icon": "subscript-glyph"
+    },
+    {
+      "id": "editor:toggle-code",
+      "name": "Toggle code",
+      "icon": "code-glyph"
+    },
+    {
+      "id": "cmenu-plugin:codeblock",
+      "name": "cMenu: Toggle codeblock",
+      "icon": "codeblock-glyph"
+    },
+    {
+      "id": "editor:toggle-blockquote",
+      "name": "Toggle blockquote",
+      "icon": "quote-glyph"
+    }
+  ],
+```
+
+As you can see, cMenu adds four new commands to Obsidian's command library. Those commands are added to an array of commands that are then read within the generation of the cMenu modal. If you would like to remove and/or add new commands, you can do so within the cMenu settings panel. Use the green button to add a new command onto the menu. And use the red button to remove them from the menu. When you add/remove a new command, you will see a message in your console, indicating the status of said command. Now, in order to see the changes on cMenu, it's important to know that cMenu is created on the `active-leaf-change` event. This means that changes to cMenu will only take effect once you close all existing leaves and spawn a new one. This will likely change in the future as I look into a better way to do this!
 
 ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu.gif)
 
