@@ -7,7 +7,7 @@
 
 ### Status: This plugin is now available in Obsidian plugin store
 
-cMenu is a plugin that adds a minimal and user friendly text editor modal for a smoother writing/editing experience ✍🏽. This plugin makes text editing easier for those that don't wish to configure a multitude of hotkeys.
+cMenu is a plugin that adds a minimal and user friendly text editor modal for a smoother writing/editing experience ✍🏽. This plugin makes text editing and firing commands easier for those that don't wish to configure a multitude of hotkeys.
 
 ## Demo
 
@@ -19,10 +19,21 @@ This plugin was specifically designed for note-takers that want to have a simple
 
 ## How it Works
 
-Currently, cMenu only works on text that had been selected.
-Each button on cMenu stores a command that finds your selected, and wraps it within your chosen markup. This makes things like creating codeblocks or blockquotes much easier to do. cMenu is also a standalone component, which makes your workspace much cleaner to write in with minimal clutter. To append cMenu onto your worspace, simply enable the plugin. To remove cMenu from your workspace, disable it.
+With the newest update of cMenu, you can add just about any command from Obsidian's command library onto the menu bar. By default, the menu bar will have the following commands: Toggle bold, Toggle italics, Toggle strikethrough, cMenu: Toggle Underline, cMenu: Toggle Superscript, cMenu: Toggle Subscript, Toggle code, cMenu: Toggle codeblock, and Toggle blockquote. As you can see, cMenu adds four new commands to Obsidian's command library. Those commands are added to an array of commands that are then read within the generation of the cMenu modal. If you would like to remove and/or add new commands, you can do so within the cMenu settings panel. Use the green button to add a new command onto the menu. And use the red button to remove them from the menu. When you add/remove a new command, you will see a message in your console, indicating the status of said command. Now, in order to see the changes on cMenu, it's important to know that cMenu is created on the `active-leaf-change` event. This means that changes to cMenu will only take effect once you close all existing leaves and spawn a new one. This will likely change in the future as I look into a better way to do this!
 
-![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cmenu-and-admonition.gif)
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu.gif)
+
+The plugins Templater and Hotkeys for Templates are strongly recommended to use with cMenu. For example: I have a template that spawns the chess opening "Alekhine's Defense." With Hotkeys for Templates, I can choose to add this template to Obsidian's command library. Now that it's in the command library, I can choose to append this command to cMenu. This means you can really add just about anything to cMenu now, which makes it much more powerful!
+
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Hotkeys%20for%20Templates.gif)
+
+cMenu also has a few stylistic changes that are also customizeable. For those that use the plugin "Sliding Panes," you can now change cMenu's append method to "body." That way, cMenu will no longer append to the workspace area, but to the body of the app. This is a bit of a work around for the current issue with Sliding Panes but I'm actively looking into a better solution.
+
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Sliding%20Panes.gif)
+
+With cMenu, you can change the design aesthetic. Glass morphism is a pretty popular design trend so I thought "why not add this to cMenu?!" You can choose to have a "glass" style for cMenu, which gives it a unique look.
+
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/Glass%20cMenu.gif)
 
 ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu.png)
 
@@ -67,8 +78,8 @@ This plugin is now available in the community plugin store. You can install it f
 
 ## Roadmap
 
-- [ ] Add custom commands to cMenu
-  - [ ] Choose icons for commands without
+- [x] Add custom commands to cMenu
+  - [x] Choose icons for commands without
 - [ ] Follow the cursor setting
   - [ ] Setting to toggle for cMenu to follow mouse cursor
 - [ ] Fix to work with Sliding Panes
