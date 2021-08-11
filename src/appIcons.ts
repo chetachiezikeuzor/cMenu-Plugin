@@ -1,5 +1,5 @@
 export const appIcons: string[] = [
-  // From Obsidian app.js file
+  // from obsidian app.js file
   "add-note-glyph",
   "any-key",
   "audio-file",
