@@ -144,6 +144,14 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
+### [1.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.0) - Aug 11, 2021
+
+##### Added
+
+- Added more icons to command icon chooser
+
+---
+
 ## Roadmap
 
 - [x] Add custom commands to cMenu
