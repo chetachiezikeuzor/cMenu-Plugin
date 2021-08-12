@@ -13,7 +13,53 @@ export interface cMenuSettings {
 
 export const DEFAULT_SETTINGS: cMenuSettings = {
   aestheticStyle: "default",
-  menuCommands: [],
+  menuCommands: [
+    {
+      id: "editor:toggle-bold",
+      name: "Toggle bold",
+      icon: "bold-glyph",
+    },
+    {
+      id: "editor:toggle-italics",
+      name: "Toggle italics",
+      icon: "italic-glyph",
+    },
+    {
+      id: "editor:toggle-strikethrough",
+      name: "Toggle strikethrough",
+      icon: "strikethrough-glyph",
+    },
+    {
+      id: "cmenu-plugin:underline",
+      name: "cMenu: Toggle Underline",
+      icon: "underline-glyph",
+    },
+    {
+      id: "cmenu-plugin:superscript",
+      name: "cMenu: Toggle Superscript",
+      icon: "superscript-glyph",
+    },
+    {
+      id: "cmenu-plugin:subscript",
+      name: "cMenu: Toggle Subscript",
+      icon: "subscript-glyph",
+    },
+    {
+      id: "editor:toggle-code",
+      name: "Toggle code",
+      icon: "code-glyph",
+    },
+    {
+      id: "cmenu-plugin:codeblock",
+      name: "cMenu: Toggle codeblock",
+      icon: "codeblock-glyph",
+    },
+    {
+      id: "editor:toggle-blockquote",
+      name: "Toggle blockquote",
+      icon: "quote-glyph",
+    },
+  ],
   gridItems: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
   appendMethod: "workspace",
 };
@@ -66,7 +112,9 @@ export class cMenuSettingTab extends PluginSettingTab {
       });
     new Setting(containerEl)
       .setName("Customize cMenu Commands")
-      .setDesc("Add a command from Obsidian's commands library to cMenu.")
+      .setDesc(
+        "Add a command from Obsidian's commands library to cMenu. By default, your commands are set to: Toggle bold, Toggle italics, Toggle strikethrough, cMenu: Toggle Underline, cMenu: Toggle Superscript, cMenu: Toggle Subscript, Toggle code, cMenu: Toggle codeblock, and Toggle blockquote."
+      )
       .addButton((addButton) => {
         addButton
           .setIcon("cMenuAdd")
