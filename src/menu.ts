@@ -28,8 +28,7 @@ export function cMenuPopover(app: App, settings: cMenuSettings): void {
         : document.body.appendChild(cMenu);
 
       settings.menuCommands.forEach((item: Command) => {
-        var cMenuModalBar = document.getElementById("cMenuModalBar");
-        var button = new ButtonComponent(cMenuModalBar);
+        var button = new ButtonComponent(cMenu);
         button
           .setIcon(item.icon)
           .setClass("cMenuCommandItem")
