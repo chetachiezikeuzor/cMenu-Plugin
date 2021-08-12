@@ -144,7 +144,7 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
-### [1.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.0) - Aug 11, 2021
+### [1.0.1](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.0.1) - Aug 11, 2021
 
 ##### Added
 
