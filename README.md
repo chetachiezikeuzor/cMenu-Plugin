@@ -27,27 +27,11 @@ With the newest update of cMenu, you can add just about any command from Obsidia
       "id": "editor:toggle-bold",
       "name": "Toggle bold",
       "icon": "bold-glyph",
-      "hotkeys": [
-        {
-          "modifiers": [
-            "Mod"
-          ],
-          "key": "B"
-        }
-      ]
     },
     {
       "id": "editor:toggle-italics",
       "name": "Toggle italics",
       "icon": "italic-glyph",
-      "hotkeys": [
-        {
-          "modifiers": [
-            "Mod"
-          ],
-          "key": "I"
-        }
-      ]
     },
     {
       "id": "editor:toggle-strikethrough",
