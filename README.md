@@ -152,6 +152,19 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
+### [1.0.2](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.0.2) - Aug 13, 2021
+
+##### Changed
+
+- Removed most !importants for better custom styling
+
+##### Added
+
+- Added a few more icons
+- Added updates to UI
+
+---
+
 ## Roadmap
 
 - [x] Add custom commands to cMenu
