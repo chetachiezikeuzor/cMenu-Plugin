@@ -15,19 +15,14 @@
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@rollup/plugin-typescript": "^8.2.1",
-    "@types/boxicons": "^2.0.9",
     "@types/feather-icons": "^4.7.0",
     "@types/node": "^14.17.6",
-    "boxicons": "^2.0.9",
     "obsidian": "^0.12.11",
     "rollup": "^2.54.0",
     "tslib": "^2.2.0",
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@tabler/icons": "^1.41.2",
-    "feather-icons": "^4.28.0",
-    "remixicon": "^2.5.0",
-    "tabler": "^1.0.0-alpha.8"
+    "feather-icons": "^4.28.0"
   }
 }
