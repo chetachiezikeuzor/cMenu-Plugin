@@ -1,7 +1,13 @@
 import { Plugin, MarkdownView } from "obsidian";
 import addIcons from "./src/customIcons";
-import { selfDestruct, cMenuPopover } from "src/menu";
-import { cMenuSettings, DEFAULT_SETTINGS, cMenuSettingTab } from "src/settings";
+import { addFeatherIcons } from "./src/customIcons";
+import { appIcons } from "./src/appIcons";
+import { selfDestruct, cMenuPopover } from "./src/menu";
+import {
+  cMenuSettings,
+  DEFAULT_SETTINGS,
+  cMenuSettingTab,
+} from "./src/settings";
 
 export default class cMenuPlugin extends Plugin {
   settings: cMenuSettings;
@@ -11,6 +17,7 @@ export default class cMenuPlugin extends Plugin {
     console.log("cMenu v" + this.manifest.version + " loaded");
     await this.loadSettings();
     addIcons();
+    addFeatherIcons(appIcons);
 
     this.addCommand({
       id: "underline",

@@ -1,3 +1,4 @@
+import * as featherIcons from "feather-icons";
 import { addIcon } from "obsidian";
 
 const icons: Record<string, string> = {
@@ -13,5 +14,18 @@ const icons: Record<string, string> = {
 export default function addIcons() {
   Object.keys(icons).forEach((key) => {
     addIcon(key, icons[key]);
+  });
+}
+
+export function addFeatherIcons(appIcons: string[]) {
+  Object.values(featherIcons.icons).forEach((icon) => {
+    const svg = icon.toSvg({
+      viewBox: "0 0 24 24",
+      width: "100",
+      height: "100",
+      "stroke-width": "2",
+    });
+    addIcon("feather-" + icon.name, svg);
+    appIcons.push("feather-" + icon.name);
   });
 }

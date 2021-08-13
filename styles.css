@@ -38,7 +38,7 @@
 #cMenuModalBar button.cMenuCommandItem svg {
   width: 1.3em;
   height: 1.3em;
-  fill: var(--text-normal);
+  stroke-width: 2;
 }
 
 .modal.mod-settings
@@ -68,8 +68,9 @@ button.cMenuSettingsButton {
 }
 
 .cMenuIconPick svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
+  stroke-width: 2;
 }
 
 .cMenuFlex {
