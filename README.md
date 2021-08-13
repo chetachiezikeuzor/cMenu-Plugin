@@ -79,7 +79,7 @@ The plugins <a href="https://github.com/SilentVoid13/Templater" target="_blank">
 
 ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Hotkeys%20for%20Templates.gif)
 
-cMenu also has a few stylistic changes that are also customizeable. For those that use the plugin <a href="https://github.com/deathau/sliding-panes-obsidian" target="_blank">Sliding Panes</a>, you can now change cMenu's append method to "body." That way, cMenu will no longer append to the workspace area, but to the body of the app. This is a bit of a work around for the current issue with <a href="https://github.com/deathau/sliding-panes-obsidian" target="_blank">Sliding Panes</a> but I'm actively looking into a better solution.
+cMenu also has a few stylistic changes that are also customizeable. For those that use the plugin <a href="https://github.com/deathau/sliding-panes-obsidian" target="_blank">Sliding Panes</a>, you can now change cMenu's append method to "body." That way, cMenu will no longer appends to the workspace area, but to the body of the app. This is a bit of a work around for the current issue with <a href="https://github.com/deathau/sliding-panes-obsidian" target="_blank">Sliding Panes</a> but I'm actively looking into a better solution.
 
 ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Sliding%20Panes.gif)
 
