@@ -3,8 +3,18 @@ import addIcons from "./src/customIcons";
 import { selfDestruct, cMenuPopover } from "src/menu";
 import { cMenuSettings, DEFAULT_SETTINGS, cMenuSettingTab } from "src/settings";
 
+import {
+  addIcon,
+  debounce,
+  Menu,
+  setIcon,
+  SliderComponent,
+  ToggleComponent,
+} from "obsidian";
+
 export default class cMenuPlugin extends Plugin {
   settings: cMenuSettings;
+  statusBarIcon: HTMLElement;
 
   async onload(): Promise<void> {
     console.log("cMenu v" + this.manifest.version + " loaded");

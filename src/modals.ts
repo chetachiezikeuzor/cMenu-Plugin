@@ -37,7 +37,7 @@ class ChooseFromIconList extends FuzzySuggestModal<string> {
     }, 100);
     console.log(
       `%cCommand '${this.command.name}' was added to cMenu`,
-      "color: #17ff74"
+      "color: Violet"
     );
   }
 }
@@ -68,7 +68,7 @@ export class CommandPicker extends FuzzySuggestModal<Command> {
       }, 100);
       console.log(
         `%cCommand '${item.name}' was added to cMenu`,
-        "color: #17ff74"
+        "color: Violet"
       );
     } else {
       new ChooseFromIconList(this.plugin, item).open();

@@ -16,15 +16,11 @@
 }
 
 #cMenuModalBar .cMenuCommandItem {
-  padding: 5px 6px;
-  display: flex;
-  box-shadow: none;
-}
-
-.cMenuCommandItem {
   margin: 2px;
   border: none;
   cursor: pointer;
+  padding: 5px 6px;
+  display: flex;
   box-shadow: none;
   margin-left: 3px;
   margin-right: 3px;
@@ -36,21 +32,23 @@
 }
 
 #cMenuModalBar button.cMenuCommandItem:hover {
-  background-color: var(--background-secondary) !important;
+  background-color: var(--background-secondary);
 }
 
-#cMenuModalBar .cMenuCommandItem svg {
+#cMenuModalBar button.cMenuCommandItem svg {
   width: 1.3em;
   height: 1.3em;
   fill: var(--text-normal);
 }
 
-button.cMenuSettingsButton.cMenuSettingsButtonAdd {
-  background-color: #17ff74 !important;
+.modal.mod-settings
+  button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonAdd {
+  background-color: var(--interactive-accent-hover);
 }
 
-button.cMenuSettingsButton.cMenuSettingsButtonDelete {
-  background-color: #ff2360 !important;
+.modal.mod-settings
+  button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonDelete {
+  background-color: #989cab;
 }
 
 button.cMenuSettingsButton {

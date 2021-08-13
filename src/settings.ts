@@ -138,7 +138,7 @@ export class cMenuSettingTab extends PluginSettingTab {
               this.display();
               console.log(
                 `%cCommand '${newCommand.name}' was removed from cMenu`,
-                "color: #ff2360"
+                "color: #989cab"
               );
             });
         });
