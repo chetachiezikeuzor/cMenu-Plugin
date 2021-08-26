@@ -15,3 +15,6 @@ data.json
 
 #history
 .history
+
+#DS Store
+.DS_Store
