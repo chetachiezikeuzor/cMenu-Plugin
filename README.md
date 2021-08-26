@@ -138,7 +138,7 @@ This plugin is now available in the community plugin store. You can install it f
 ##### Added
 
 - Added new glass morphism setting.
-  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/Glass%20cMenu.gif)
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/glass-cMenu.gif)
 - Added new custom commands setting
   ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Hotkeys%20for%20Templates.gif)
 
@@ -182,7 +182,7 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
-## Roadmap
+## Checklist
 
 - [x] Add custom commands to cMenu
   - [x] Choose icons for commands without
