@@ -173,6 +173,16 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
+### [1.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.0) - Aug 26, 2021
+
+##### Added
+
+- New status bar menu for extra cMenu setting
+  - Hide/Show buttons
+  - Bottom value change
+
+---
+
 ## Roadmap
 
 - [x] Add custom commands to cMenu
