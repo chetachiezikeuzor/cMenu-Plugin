@@ -178,9 +178,9 @@ This plugin is now available in the community plugin store. You can install it f
 ##### Added
 
 - New status bar menu for extra cMenu setting
-  - Hide/Show buttons
-  - Bottom value change
   - ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20status%20bar%20menu.gif)
+    - Hide/Show buttons
+    - Bottom value change
 
 ---
 
