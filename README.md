@@ -87,6 +87,12 @@ With cMenu, you can change the design aesthetic. Glass morphism is a pretty popu
 
 ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/glass-cMenu.gif)
 
+## cMenu Status Bar Menu
+
+With the new [1.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.0) update, you can now control to bottom value of cMenu, as well as toggle to hide cMenu and add/delete new command items. The delete button will remove the most recently added command.
+
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20status%20bar%20menu.gif)
+
 ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu.png)
 
 ## Installation
