@@ -81,7 +81,7 @@ The plugins <a href="https://github.com/SilentVoid13/Templater" target="_blank">
 
 cMenu also has a few stylistic changes that are also customizeable. For those that use the plugin <a href="https://github.com/deathau/sliding-panes-obsidian" target="_blank">Sliding Panes</a>, you can now change cMenu's append method to "body." That way, cMenu will no longer appends to the workspace area, but to the body of the app. This is a bit of a work around for the current issue with <a href="https://github.com/deathau/sliding-panes-obsidian" target="_blank">Sliding Panes</a> but I'm actively looking into a better solution.
 
-![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Sliding%20Panes.gif)
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu-sliding-panes.gif)
 
 With cMenu, you can change the design aesthetic. Glass morphism is a pretty popular design trend so I thought "why not add this to cMenu?!" You can choose to have a "glass" style for cMenu, which gives it a unique look.
 
@@ -139,7 +139,7 @@ This plugin is now available in the community plugin store. You can install it f
 ##### Fixed
 
 - Fixed issue with Sliding Panes with a toggle-able append method setting.
-  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Sliding%20Panes.gif)
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu-sliding-panes.gif)
 
 ##### Added
 
