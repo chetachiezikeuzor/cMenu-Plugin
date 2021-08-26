@@ -190,6 +190,8 @@ This plugin is now available in the community plugin store. You can install it f
   - [x] Choose icons for commands without
 - [ ] Follow the cursor setting
   - [ ] Setting to toggle for cMenu to follow mouse cursor
+- [ ] Change cMenu height
+- [ ] Hide/show cMenu
 - [x] Fix to work with Sliding Panes (workaround)
   - [x] Setting to toggle for cMenu to toggle to body instead of modroot
 - [x] Glassmorphism setting
