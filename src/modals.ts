@@ -18,7 +18,7 @@ class ChooseFromIconList extends FuzzySuggestModal<string> {
   }
 
   getItemText(item: string): string {
-    return item.replace("feather-", "").replace(/-/gi, " ");
+    return item.replace("feather-", "").replace(/-/gi, " ").replace("Icon", "");
   }
 
   renderSuggestion(icon: FuzzyMatch<string>, iconItem: HTMLElement): void {

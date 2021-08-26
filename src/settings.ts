@@ -7,8 +7,10 @@ export const AESTHETIC_STYLES = ["glass", "default"];
 export interface cMenuSettings {
   aestheticStyle: string;
   menuCommands: Command[];
-  gridItems: string;
   appendMethod: string;
+  shouldShowMenuOnSelect: boolean;
+  cMenuVisibility: boolean;
+  cMenuBottomValue: number;
 }
 
 export const DEFAULT_SETTINGS: cMenuSettings = {
@@ -60,8 +62,10 @@ export const DEFAULT_SETTINGS: cMenuSettings = {
       icon: "quote-glyph",
     },
   ],
-  gridItems: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
   appendMethod: "workspace",
+  shouldShowMenuOnSelect: false,
+  cMenuVisibility: true,
+  cMenuBottomValue: 4.25,
 };
 
 export class cMenuSettingTab extends PluginSettingTab {
@@ -79,9 +83,14 @@ export class cMenuSettingTab extends PluginSettingTab {
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.createEl("h2", { text: "cMenu Settings" });
+    containerEl.createEl("h1", { text: "cMenu" });
+    containerEl.createEl("p", { text: "Created by " }).createEl("a", {
+      text: "Chetachi 👩🏽‍💻",
+      href: "https://github.com/chetachiezikeuzor",
+    });
+    containerEl.createEl("h2", { text: "Settings" });
     new Setting(containerEl)
-      .setName("Customize cMenu append method.")
+      .setName("Customize cMenu append method")
       .setDesc("Choose where cMenu will append upon regeneration.")
       .addDropdown((dropdown) => {
         let methods: Record<string, string> = {};
@@ -95,7 +104,7 @@ export class cMenuSettingTab extends PluginSettingTab {
           });
       });
     new Setting(containerEl)
-      .setName("Customize cMenu aesthetic.")
+      .setName("Customize cMenu aesthetic")
       .setDesc("Choose between a glass morphism and default style for cMenu.")
       .addDropdown((dropdown) => {
         let aesthetics: Record<string, string> = {};
@@ -111,7 +120,7 @@ export class cMenuSettingTab extends PluginSettingTab {
           });
       });
     new Setting(containerEl)
-      .setName("Customize cMenu Commands")
+      .setName("Customize cMenu commands")
       .setDesc(
         "Add a command from Obsidian's commands library to cMenu. By default, your commands are set to: Toggle bold, Toggle italics, Toggle strikethrough, cMenu: Toggle Underline, cMenu: Toggle Superscript, cMenu: Toggle Subscript, Toggle code, cMenu: Toggle codeblock, and Toggle blockquote."
       )

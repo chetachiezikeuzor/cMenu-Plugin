@@ -50,12 +50,13 @@ export function cMenuPopover(app: App, settings: cMenuSettings): void {
         cMenuModalBar.childElementCount >= 9
           ? cMenuModalBar.addClass("cMenuGrid")
           : cMenuModalBar.addClass("cMenuFlex");
-        var clientWidth = document.getElementById("cMenuModalBar").offsetWidth;
-
         cMenuModalBar.setAttribute(
           "style",
-          `left: calc(50% - calc(${clientWidth}px / 2));`
+          `left: calc(50% - calc(${cMenuModalBar.offsetWidth}px / 2)); bottom: ${settings.cMenuBottomValue}em;`
         );
+        settings.cMenuVisibility == false
+          ? (cMenuModalBar.style.visibility = "hidden")
+          : (cMenuModalBar.style.visibility = "visible");
       }
     } else {
       selfDestruct();
