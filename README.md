@@ -85,7 +85,7 @@ cMenu also has a few stylistic changes that are also customizeable. For those th
 
 With cMenu, you can change the design aesthetic. Glass morphism is a pretty popular design trend so I thought "why not add this to cMenu?!" You can choose to have a "glass" style for cMenu, which gives it a unique look.
 
-![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/Glass%20cMenu.gif)
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/glass%20cMenu.gif)
 
 ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu.png)
 

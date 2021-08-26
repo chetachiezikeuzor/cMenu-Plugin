@@ -1,3 +1,7 @@
+/*----------------------------------------------------------------
+CMENU TOOLBAR
+----------------------------------------------------------------*/
+
 #cMenuModalBar {
   width: auto;
   height: auto;
@@ -10,7 +14,7 @@
   min-width: fit-content;
   justify-content: space-around;
   z-index: var(--layer-status-bar);
-  box-shadow: 0px 3px 25px rgb(31 38 135 / 10%);
+  box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
   border: 1px solid var(--background-modifier-border);
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
@@ -27,7 +31,6 @@
   position: relative;
   border-radius: 3px;
   font-size: initial !important;
-  transition: 250ms ease-in-out;
   background-color: var(--background-primary-alt);
 }
 
@@ -41,13 +44,19 @@
   stroke-width: 2;
 }
 
+/*----------------------------------------------------------------
+CMENU SETTINGS BUTTONS
+----------------------------------------------------------------*/
+
 .modal.mod-settings
-  button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonAdd {
+  button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonAdd,
+button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonAdd {
   background-color: var(--interactive-accent-hover);
 }
 
 .modal.mod-settings
-  button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonDelete {
+  button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonDelete,
+button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonDelete {
   background-color: #989cab;
 }
 
@@ -62,16 +71,9 @@ button.cMenuSettingsButton {
   display: flex;
 }
 
-.cMenuIconPick {
-  padding: 4px;
-  vertical-align: -0.25em;
-}
-
-.cMenuIconPick svg {
-  width: 17px;
-  height: 17px;
-  stroke-width: 2;
-}
+/*----------------------------------------------------------------
+CMENU CLASS CHANGES
+----------------------------------------------------------------*/
 
 .cMenuFlex {
   display: flex;
@@ -89,6 +91,83 @@ button.cMenuSettingsButton {
 .cMenuDefaultAesthetic {
   background-color: var(--background-primary);
 }
+
+/*----------------------------------------------------------------
+CMENU ICONS
+----------------------------------------------------------------*/
+
+.cMenuIconPick {
+  padding: 4px;
+  vertical-align: -0.25em;
+}
+
+.cMenuIconPick svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 2;
+}
+
+/*----------------------------------------------------------------
+CMENU STATUS BAR MENU
+----------------------------------------------------------------*/
+
+.cmenu-statusbar-menu {
+  width: 200px;
+}
+
+.cmenu-statusbar-menu .menu-item-icon {
+  display: none;
+}
+
+.cmenu-statusbar-menu .menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.cmenu-statusbar-menu .menu-item:hover,
+.cmenu-statusbar-menu .menu-item .selected:hover,
+.cmenu-statusbar-menu .menu-item.selected:not(.is-disabled):not(.is-label) {
+  background-color: transparent;
+}
+
+.cmenu-statusbar-menu .menu-item-title {
+  margin-right: 10px;
+}
+
+.cmenu-statusbar-menu .slider {
+  width: 100%;
+}
+
+.cmenu-statusbar-menu .menu-item.buttonitem {
+  display: flex;
+}
+
+.cmenu-statusbar-menu .menu-item.buttonitem button.cMenuSettingsButton {
+  margin: 0;
+}
+
+/*----------------------------------------------------------------
+CMENU STATUS BAR BUTTONS
+----------------------------------------------------------------*/
+
+.cmenu-statusbar-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.cmenu-statusbar-button svg {
+  display: flex;
+  width: 1.3em;
+  height: 1.3em;
+}
+
+/*----------------------------------------------------------------
+CMENU SUPPORT
+----------------------------------------------------------------*/
 
 .cDonationSection {
   width: 60%;
