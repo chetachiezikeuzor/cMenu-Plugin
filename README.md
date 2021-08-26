@@ -77,7 +77,7 @@ As you can see, cMenu adds four new commands to Obsidian's command library. Thos
 
 The plugins <a href="https://github.com/SilentVoid13/Templater" target="_blank">Templater</a> and <a href="https://github.com/Vinzent03/obsidian-hotkeys-for-templates" target="_blank"> Hotkeys for Templates</a> are strongly recommended to use with cMenu. For example: I have a template that spawns the chess opening "Alekhine's Defense." With Hotkeys for Templates, I can choose to add this template to Obsidian's command library. Now that it's in the command library, I can choose to append this command to cMenu. This means you can really add just about anything to cMenu now, which makes it much more powerful!
 
-![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Hotkeys%20for%20Templates.gif)
+![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/chesser%20cMenu.gif)
 
 cMenu also has a few stylistic changes that are also customizeable. For those that use the plugin <a href="https://github.com/deathau/sliding-panes-obsidian" target="_blank">Sliding Panes</a>, you can now change cMenu's append method to "body." That way, cMenu will no longer appends to the workspace area, but to the body of the app. This is a bit of a work around for the current issue with <a href="https://github.com/deathau/sliding-panes-obsidian" target="_blank">Sliding Panes</a> but I'm actively looking into a better solution.
 
@@ -140,7 +140,7 @@ This plugin is now available in the community plugin store. You can install it f
 - Added new glass morphism setting.
   ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/glass-cMenu.gif)
 - Added new custom commands setting
-  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Hotkeys%20for%20Templates.gif)
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/chesser%20cMenu.gif)
 
 ---
 
