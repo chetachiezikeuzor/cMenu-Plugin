@@ -88,7 +88,7 @@ export class cMenuSettingTab extends PluginSettingTab {
       text: "Chetachi 👩🏽‍💻",
       href: "https://github.com/chetachiezikeuzor",
     });
-    containerEl.createEl("h2", { text: "Settings" });
+    containerEl.createEl("h2", { text: "Plugin Settings" });
     new Setting(containerEl)
       .setName("Customize cMenu append method")
       .setDesc("Choose where cMenu will append upon regeneration.")
