@@ -159,7 +159,7 @@ export default class cMenuPlugin extends Plugin {
         replacement: (selectedText) =>
           applyCommand("\n```\n", selectedText, "\n```\n"),
         cursor: 5,
-        line: 2,
+        line: 1,
       },
     };
 
@@ -219,7 +219,7 @@ export default class cMenuPlugin extends Plugin {
 
   setupStatusBar() {
     this.statusBarIcon = this.addStatusBarItem();
-    this.statusBarIcon.addClass("cmenu-statusbar-button");
+    this.statusBarIcon.addClass("cMenu-statusbar-button");
     setIcon(this.statusBarIcon, "cMenu");
 
     this.registerDomEvent(this.statusBarIcon, "click", (e) => {
@@ -250,7 +250,7 @@ export default class cMenuPlugin extends Plugin {
       });
 
       const menuDom = (menu as any).dom as HTMLElement;
-      menuDom.addClass("cmenu-statusbar-menu");
+      menuDom.addClass("cMenu-statusbar-menu");
 
       const item = menuDom.createDiv("menu-item");
       item.createDiv({ cls: "menu-item-icon" });
