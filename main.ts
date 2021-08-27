@@ -1,6 +1,7 @@
 import {
   Menu,
   Plugin,
+  Command,
   setIcon,
   debounce,
   MarkdownView,
@@ -8,114 +9,212 @@ import {
   ToggleComponent,
   ButtonComponent,
 } from "obsidian";
+
 import {
   cMenuSettings,
   DEFAULT_SETTINGS,
   cMenuSettingTab,
 } from "./src/settings";
-import { CommandPicker } from "./src/modals";
-import addIcons from "./src/customIcons";
-import { addFeatherIcons } from "./src/customIcons";
+
+import { wait } from "./src/util";
 import { appIcons } from "./src/appIcons";
+import { CommandPicker } from "./src/modals";
 import { selfDestruct, cMenuPopover } from "./src/menu";
+import addIcons, { addFeatherIcons } from "./src/customIcons";
 import { setMenuVisibility, setBottomValue } from "./src/statusBarConstants";
 
 export default class cMenuPlugin extends Plugin {
   settings: cMenuSettings;
+  plugin: cMenuPlugin;
   statusBarIcon: HTMLElement;
   cMenuBar: HTMLElement;
+  modCommands: Command[] = [
+    {
+      id: "editor:insert-embed",
+      name: "Add embed",
+      icon: "note-glyph",
+    },
+    {
+      id: "editor:insert-link",
+      name: "Insert markdown link",
+      icon: "link-glyph",
+    },
+    {
+      id: "editor:insert-tag",
+      name: "Add tag",
+      icon: "price-tag-glyph",
+    },
+    {
+      id: "editor:insert-wikilink",
+      name: "Add internal link",
+      icon: "bracket-glyph",
+    },
+    {
+      id: "editor:toggle-bold",
+      name: "Toggle bold",
+      icon: "bold-glyph",
+    },
+    {
+      id: "editor:toggle-italics",
+      name: "Toggle italics",
+      icon: "italic-glyph",
+    },
+    {
+      id: "editor:toggle-strikethrough",
+      name: "Toggle strikethrough",
+      icon: "strikethrough-glyph",
+    },
+    {
+      id: "editor:toggle-code",
+      name: "Toggle code",
+      icon: "code-glyph",
+    },
+    {
+      id: "editor:toggle-blockquote",
+      name: "Toggle blockquote",
+      icon: "quote-glyph",
+    },
+    {
+      id: "editor:toggle-bullet-list",
+      name: "Toggle bullet",
+      icon: "bullet-list-glyph",
+    },
+    {
+      id: "editor:toggle-checklist-status",
+      name: "Toggle checklist status",
+      icon: "checkbox-glyph",
+    },
+    {
+      id: "editor:toggle-comments",
+      name: "Toggle comment",
+      icon: "percent-sign-glyph",
+    },
+    {
+      id: "editor:toggle-highlight",
+      name: "Toggle highlight",
+      icon: "highlight-glyph",
+    },
+    {
+      id: "editor:toggle-numbered-list",
+      name: "Toggle numbered list",
+      icon: "number-list-glyph",
+    },
+  ];
 
   async onload(): Promise<void> {
     console.log("cMenu v" + this.manifest.version + " loaded");
     await this.loadSettings();
     addIcons();
+    addFeatherIcons(appIcons);
+    this.generateCommands();
     this.app.workspace.onLayoutReady(() => {
       setTimeout(() => {
         this.setupStatusBar();
       });
     });
-    addFeatherIcons(appIcons);
-
-    this.addCommand({
-      id: "underline",
-      name: "Toggle Underline",
-      icon: "underline-glyph",
-      callback: async () => {
-        var activeLeaf = this.app.workspace.getActiveViewOfType(MarkdownView);
-        if (activeLeaf) {
-          var view = activeLeaf;
-          var editor = view.editor;
-          var selection = editor.getSelection();
-          if (selection) {
-            editor.replaceSelection("<u>" + selection + "</u>");
-          } else {
-            return;
-          }
-        }
-      },
-    });
-
-    this.addCommand({
-      id: "superscript",
-      name: "Toggle Superscript",
-      icon: "superscript-glyph",
-      callback: async () => {
-        var activeLeaf = this.app.workspace.getActiveViewOfType(MarkdownView);
-        if (activeLeaf) {
-          var view = activeLeaf;
-          var editor = view.editor;
-          var selection = editor.getSelection();
-          if (selection) {
-            editor.replaceSelection("<sup>" + selection + "</sup>");
-          } else {
-            return;
-          }
-        }
-      },
-    });
-
-    this.addCommand({
-      id: "subscript",
-      name: "Toggle Subscript",
-      icon: "subscript-glyph",
-      callback: async () => {
-        var activeLeaf = this.app.workspace.getActiveViewOfType(MarkdownView);
-        if (activeLeaf) {
-          var view = activeLeaf;
-          var editor = view.editor;
-          var selection = editor.getSelection();
-          if (selection) {
-            editor.replaceSelection("<sub>" + selection + "</sub>");
-          } else {
-            return;
-          }
-        }
-      },
-    });
-
-    this.addCommand({
-      id: "codeblock",
-      name: "Toggle codeblock",
-      icon: "codeblock-glyph",
-      callback: async () => {
-        var activeLeaf = this.app.workspace.getActiveViewOfType(MarkdownView);
-        if (activeLeaf) {
-          var view = activeLeaf;
-          var editor = view.editor;
-          var selection = editor.getSelection();
-          if (selection) {
-            editor.replaceSelection("\n```\n" + selection + "\n```\n");
-          } else {
-            return;
-          }
-        }
-      },
-    });
-
     this.addSettingTab(new cMenuSettingTab(this.app, this));
     this.registerEvent(
       this.app.workspace.on("active-leaf-change", this.handlecMenu)
     );
+  }
+
+  generateCommands() {
+    const applyCommand = (
+      prefix: string,
+      selectedText: string,
+      suffix: string
+    ) => {
+      suffix = suffix || prefix;
+      return `${prefix}${selectedText}${suffix}`;
+    };
+
+    type commandsPlot = {
+      [key: string]: {
+        replacement: (selectedText: string) => string;
+        cursor: number;
+        line: number;
+      };
+    };
+
+    const commandsMap: commandsPlot = {
+      underline: {
+        replacement: (selectedText) =>
+          applyCommand("<u>", selectedText, "</u>"),
+        cursor: 3,
+        line: 0,
+      },
+      superscript: {
+        replacement: (selectedText) =>
+          applyCommand("<sup>", selectedText, "</sup>"),
+        cursor: 5,
+        line: 0,
+      },
+      subscript: {
+        replacement: (selectedText) =>
+          applyCommand("<sub>", selectedText, "</sub>"),
+        cursor: 5,
+        line: 0,
+      },
+      codeblock: {
+        replacement: (selectedText) =>
+          applyCommand("\n```\n", selectedText, "\n```\n"),
+        cursor: 5,
+        line: 2,
+      },
+    };
+
+    Object.keys(commandsMap).forEach((type) => {
+      this.addCommand({
+        id: `${type}`,
+        name: `Toggle ${type}`,
+        icon: `${type}-glyph`,
+        callback: async () => {
+          const activeLeaf =
+            this.app.workspace.getActiveViewOfType(MarkdownView);
+          if (activeLeaf) {
+            const view = activeLeaf;
+            const editor = view.editor;
+            const selection = editor.getSelection();
+            const curserStart = editor.getCursor("from");
+            const curserEnd = editor.getCursor("to");
+            if (selection) {
+              editor.replaceSelection(commandsMap[type].replacement(selection));
+              editor.setCursor(
+                curserStart.line + commandsMap[type].line,
+                curserEnd.ch + commandsMap[type].cursor
+              );
+            } else {
+              editor.replaceRange(
+                commandsMap[type].replacement(selection),
+                curserStart
+              );
+              editor.setCursor(
+                curserStart.line + commandsMap[type].line,
+                curserEnd.ch + commandsMap[type].cursor
+              );
+            }
+            await wait(10);
+            //@ts-ignore
+            this.app.commands.executeCommandById("editor:focus");
+          }
+        },
+      });
+    });
+
+    this.modCommands.forEach((type) => {
+      this.addCommand({
+        id: `${type["id"]}`.trim().replace(/cMenu: /g, ""),
+        name: `${type["name"]}`.trim().replace(/cMenu: /g, ""),
+        icon: `${type["icon"]}`,
+        callback: async () => {
+          //@ts-ignore
+          this.app.commands.executeCommandById(`${type["id"]}`);
+          await wait(10);
+          //@ts-ignore
+          this.app.commands.executeCommandById("editor:focus");
+        },
+      });
+    });
   }
 
   setupStatusBar() {
