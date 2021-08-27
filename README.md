@@ -179,12 +179,14 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
-### [1.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.0) - Aug 26, 2021
+### [1.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.0) - Aug 27, 2021
 
 ##### Added
 
-- New status bar menu for extra cMenu setting: Hide/Show buttons, Bottom value change
+- Added new status bar menu for extra cMenu setting: Hide/Show buttons, Bottom value change
   ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20status%20bar%20menu.gif)
+- Added modified text editing commands
+  - Commands will maintain focus in editor after execution
 
 ---
 
@@ -198,6 +200,8 @@ This plugin is now available in the community plugin store. You can install it f
 - [ ] Hide/show cMenu
 - [ ] Identify if text has been [selected](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issuecomment-901091701)
 - [ ] Easy command button [reordering](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/9#issue-969667944)
+- [ ] Modify text editing commands
+  - Maintain focus in editor
 - [ ] cMenu workspaces/nested menus
 - [x] Fix to work with Sliding Panes (workaround)
   - [x] Setting to toggle for cMenu to toggle to body instead of modroot
