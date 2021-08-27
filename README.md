@@ -187,6 +187,7 @@ This plugin is now available in the community plugin store. You can install it f
   ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20status%20bar%20menu.gif)
 - Added modified text editing commands
   - Commands will maintain focus in editor after execution
+    ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20Bottom.gif)
 
 ---
 
