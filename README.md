@@ -89,7 +89,7 @@ With cMenu, you can change the design aesthetic. Glass morphism is a pretty popu
 
 ## cMenu Status Bar Menu
 
-With the new [1.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.0) update, you can now control to bottom value of cMenu, as well as toggle to hide cMenu and add/delete new command items. The delete button will remove the most recently added command.
+With the new [1.1.0](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.0) update, you can control to bottom value of cMenu, as well as toggle to hide cMenu and add/delete new command items. The delete button will remove the most recently added command.
 
 ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20status%20bar%20menu.gif)
 
@@ -197,7 +197,7 @@ This plugin is now available in the community plugin store. You can install it f
 - [ ] Follow the cursor setting
   - [ ] Setting to toggle for cMenu to follow mouse cursor
 - [ ] Change cMenu height
-- [ ] Hide/show cMenu
+- [x] Hide/show cMenu
 - [ ] Identify if text has been [selected](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issuecomment-901091701)
 - [ ] Easy command button [reordering](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/9#issue-969667944)
 - [ ] Modify text editing commands
