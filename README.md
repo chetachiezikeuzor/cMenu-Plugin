@@ -196,11 +196,11 @@ This plugin is now available in the community plugin store. You can install it f
   - [x] Choose icons for commands without
 - [ ] Follow the cursor setting
   - [ ] Setting to toggle for cMenu to follow mouse cursor
-- [ ] Change cMenu height
-- [x] Hide/show cMenu
+- [x] Change cMenu [bottom value](https://www.reddit.com/r/ObsidianMD/comments/owlaaf/new_obsidian_plugin_cmenu/h8vkn0v?utm_source=share&utm_medium=web2x&context=3)
+- [x] [Hide/show](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/10#issue-971519914) cMenu
 - [ ] Identify if text has been [selected](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issuecomment-901091701)
 - [ ] Easy command button [reordering](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/9#issue-969667944)
-- [ ] Modify text editing commands
+- [ ] [Modify](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issue-973612232) text editing commands
   - Maintain focus in editor
 - [ ] cMenu workspaces/nested menus
 - [x] Fix to work with Sliding Panes (workaround)
