@@ -17,47 +17,47 @@ export const DEFAULT_SETTINGS: cMenuSettings = {
   aestheticStyle: "default",
   menuCommands: [
     {
-      id: "cMenu-plugin:editor:toggle-bold",
+      id: "cmenu-plugin:editor:toggle-bold",
       name: "cMenu: Toggle bold",
       icon: "bold-glyph",
     },
     {
-      id: "cMenu-plugin:editor:toggle-italics",
+      id: "cmenu-plugin:editor:toggle-italics",
       name: "cMenu: Toggle italics",
       icon: "italic-glyph",
     },
     {
-      id: "cMenu-plugin:editor:toggle-strikethrough",
+      id: "cmenu-plugin:editor:toggle-strikethrough",
       name: "cMenu: Toggle strikethrough",
       icon: "strikethrough-glyph",
     },
     {
-      id: "cMenu-plugin:underline",
+      id: "cmenu-plugin:underline",
       name: "cMenu: Toggle underline",
       icon: "underline-glyph",
     },
     {
-      id: "cMenu-plugin:superscript",
+      id: "cmenu-plugin:superscript",
       name: "cMenu: Toggle superscript",
       icon: "superscript-glyph",
     },
     {
-      id: "cMenu-plugin:subscript",
+      id: "cmenu-plugin:subscript",
       name: "cMenu: Toggle subscript",
       icon: "subscript-glyph",
     },
     {
-      id: "cMenu-plugin:editor:toggle-code",
+      id: "cmenu-plugin:editor:toggle-code",
       name: "cMenu: Toggle code",
       icon: "code-glyph",
     },
     {
-      id: "cMenu-plugin:codeblock",
+      id: "cmenu-plugin:codeblock",
       name: "cMenu: Toggle codeblock",
       icon: "codeblock-glyph",
     },
     {
-      id: "cMenu-plugin:editor:toggle-blockquote",
+      id: "cmenu-plugin:editor:toggle-blockquote",
       name: "cMenu: Toggle blockquote",
       icon: "quote-glyph",
     },
