@@ -200,6 +200,8 @@ This plugin is now available in the community plugin store. You can install it f
 - [x] [Hide/show](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/10#issue-971519914) cMenu
 - [ ] Identify if text has been [selected](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issuecomment-901091701)
 - [ ] Easy command button [reordering](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/9#issue-969667944)
+- [ ] Function to easily add/delete command buttons
+    - [ ] Add/delete buttons without needed to close out leaves
 - [x] [Modify](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issue-973612232) text editing commands
   - Maintain focus in editor
 - [ ] cMenu workspaces/nested menus
