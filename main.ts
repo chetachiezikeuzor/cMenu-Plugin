@@ -131,7 +131,7 @@ export default class cMenuPlugin extends Plugin {
     type commandsPlot = {
       [key: string]: {
         replacement: (selectedText: string) => string;
-        cursor: number;
+        char: number;
         line: number;
       };
     };
@@ -140,25 +140,25 @@ export default class cMenuPlugin extends Plugin {
       underline: {
         replacement: (selectedText) =>
           applyCommand("<u>", selectedText, "</u>"),
-        cursor: 3,
+        char: 3,
         line: 0,
       },
       superscript: {
         replacement: (selectedText) =>
           applyCommand("<sup>", selectedText, "</sup>"),
-        cursor: 5,
+        char: 5,
         line: 0,
       },
       subscript: {
         replacement: (selectedText) =>
           applyCommand("<sub>", selectedText, "</sub>"),
-        cursor: 5,
+        char: 5,
         line: 0,
       },
       codeblock: {
         replacement: (selectedText) =>
           applyCommand("\n```\n", selectedText, "\n```\n"),
-        cursor: 5,
+        char: 5,
         line: 1,
       },
     };
@@ -181,7 +181,7 @@ export default class cMenuPlugin extends Plugin {
               editor.replaceSelection(commandsMap[type].replacement(selection));
               editor.setCursor(
                 curserStart.line + commandsMap[type].line,
-                curserEnd.ch + commandsMap[type].cursor
+                curserEnd.ch + commandsMap[type].char
               );
             } else {
               editor.replaceRange(
@@ -190,7 +190,7 @@ export default class cMenuPlugin extends Plugin {
               );
               editor.setCursor(
                 curserStart.line + commandsMap[type].line,
-                curserEnd.ch + commandsMap[type].cursor
+                curserEnd.ch + commandsMap[type].char
               );
             }
             await wait(10);
@@ -203,10 +203,13 @@ export default class cMenuPlugin extends Plugin {
 
     this.modCommands.forEach((type) => {
       this.addCommand({
-        id: `${type["id"]}`.trim().replace(/cMenu: /g, ""),
-        name: `${type["name"]}`.trim().replace(/cMenu: /g, ""),
+        id: `${type["id"]}`,
+        name: `${type["name"]}`,
         icon: `${type["icon"]}`,
         callback: async () => {
+          const activeLeaf =
+            this.app.workspace.getActiveViewOfType(MarkdownView);
+          const view = activeLeaf;
           //@ts-ignore
           this.app.commands.executeCommandById(`${type["id"]}`);
           await wait(10);
