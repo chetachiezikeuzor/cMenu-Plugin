@@ -10,19 +10,18 @@ import {
   ButtonComponent,
   App,
 } from "obsidian";
-
-import { cMenuSettingTab } from "src/settings/settingsTab";
-import { cMenuSettings, DEFAULT_SETTINGS } from "src/settings/settingsData";
-
 import { wait } from "src/util/util";
 import { appIcons } from "src/icons/appIcons";
 import { CommandPicker } from "src/modals/suggesterModals";
+import { cMenuSettingTab } from "src/settings/settingsTab";
 import { selfDestruct, cMenuPopover } from "src/modals/cMenuModal";
+import { cMenuSettings, DEFAULT_SETTINGS } from "src/settings/settingsData";
 import addIcons, {
   addFeatherIcons,
   addRemixIcons,
   addBoxIcons,
 } from "src/icons/customIcons";
+
 import { setMenuVisibility, setBottomValue } from "src/util/statusBarConstants";
 
 export default class cMenuPlugin extends Plugin {
