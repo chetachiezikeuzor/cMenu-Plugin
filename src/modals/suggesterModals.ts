@@ -1,6 +1,6 @@
+import type cMenuPlugin from "src/plugin/main";
+import { appIcons } from "src/icons/appIcons";
 import { Command, setIcon, FuzzyMatch, FuzzySuggestModal } from "obsidian";
-import cMenuPlugin from "main";
-import { appIcons } from "./appIcons";
 
 class ChooseFromIconList extends FuzzySuggestModal<string> {
   plugin: cMenuPlugin;
@@ -10,7 +10,17 @@ class ChooseFromIconList extends FuzzySuggestModal<string> {
     super(plugin.app);
     this.plugin = plugin;
     this.command = command;
-    this.setPlaceholder("Choose from icon list");
+    this.setPlaceholder("Choose an icon");
+  }
+
+  private capitalJoin(string: string): string {
+    const icon = string.split(" ");
+
+    return icon
+      .map((icon) => {
+        return icon[0].toUpperCase() + icon.substring(1);
+      })
+      .join(" ");
   }
 
   getItems(): string[] {
@@ -18,7 +28,15 @@ class ChooseFromIconList extends FuzzySuggestModal<string> {
   }
 
   getItemText(item: string): string {
-    return item.replace("feather-", "").replace(/-/gi, " ").replace("Icon", "");
+    return this.capitalJoin(
+      item
+        .replace("feather-", "")
+        .replace("remix-", "")
+        .replace("bx-", "")
+        .replace(/([A-Z])/g, " $1")
+        .trim()
+        .replace(/-/gi, " ")
+    );
   }
 
   renderSuggestion(icon: FuzzyMatch<string>, iconItem: HTMLElement): void {
@@ -44,10 +62,11 @@ class ChooseFromIconList extends FuzzySuggestModal<string> {
 
 export class CommandPicker extends FuzzySuggestModal<Command> {
   command: Command;
+
   constructor(private plugin: cMenuPlugin) {
     super(plugin.app);
     this.app;
-    this.setPlaceholder("Choose from commands list");
+    this.setPlaceholder("Choose a command");
   }
 
   getItems(): Command[] {

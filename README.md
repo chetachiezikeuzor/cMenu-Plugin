@@ -192,21 +192,27 @@ This plugin is now available in the community plugin store. You can install it f
 
 ## Checklist
 
-- [x] Add custom commands to cMenu
-  - [x] Choose icons for commands without
-- [ ] Follow the cursor setting
-  - [ ] Setting to toggle for cMenu to follow mouse cursor
-- [x] Change cMenu [bottom value](https://www.reddit.com/r/ObsidianMD/comments/owlaaf/new_obsidian_plugin_cmenu/h8vkn0v?utm_source=share&utm_medium=web2x&context=3)
-- [x] [Hide/show](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/10#issue-971519914) cMenu
-- [ ] Identify if text has been [selected](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issuecomment-901091701)
-- [ ] Easy command button [reordering](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/9#issue-969667944)
-- [x] [Modify](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issue-973612232) text editing commands
-  - Maintain focus in editor
-- [ ] cMenu workspaces/nested menus
-- [x] Fix to work with Sliding Panes (workaround)
-  - [x] Setting to toggle for cMenu to toggle to body instead of modroot
 - [x] Glassmorphism setting
   - [x] Setting to toggle for glass effect with cMenu
+- [x] Fix to work with Sliding Panes (workaround)
+  - [x] Setting to toggle for cMenu to toggle to body instead of modroot
+- [x] Add custom commands to cMenu
+  - [x] Choose icons for commands without
+- [x] [Modify](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issue-973612232) text editing commands
+  - [x] Maintain focus in editor
+- [x] Change cMenu [bottom value](https://www.reddit.com/r/ObsidianMD/comments/owlaaf/new_obsidian_plugin_cmenu/h8vkn0v?utm_source=share&utm_medium=web2x&context=3)
+- [x] [Hide/show](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/10#issue-971519914) cMenu
+- [ ] Add more command icons (Remix Icons)
+- [ ] Custom cMenu columns
+  - [ ] Setting to customize cMenu columns (control number of command buttons per row on cMenu)
+- [ ] Reload cMenu
+  - [ ] Add reload after new command added and command deletion functions.
+  - [ ] Add general reload button (runs reload function)
+- [ ] Identify if text has been [selected](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issuecomment-901091701)
+- [ ] Easy command button [reordering](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/9#issue-969667944)
+- [ ] cMenu workspaces/nested menu
+- [ ] Follow the cursor setting
+  - [ ] Setting to toggle for cMenu to follow mouse cursor
 
 ---
 

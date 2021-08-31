@@ -8,24 +8,26 @@ import {
   SliderComponent,
   ToggleComponent,
   ButtonComponent,
+  App,
 } from "obsidian";
 
-import {
-  cMenuSettings,
-  DEFAULT_SETTINGS,
-  cMenuSettingTab,
-} from "./src/settings";
+import { cMenuSettingTab } from "src/settings/settingsTab";
+import { cMenuSettings, DEFAULT_SETTINGS } from "src/settings/settingsData";
 
-import { wait } from "./src/util";
-import { appIcons } from "./src/appIcons";
-import { CommandPicker } from "./src/modals";
-import { selfDestruct, cMenuPopover } from "./src/menu";
-import addIcons, { addFeatherIcons } from "./src/customIcons";
-import { setMenuVisibility, setBottomValue } from "./src/statusBarConstants";
+import { wait } from "src/util/util";
+import { appIcons } from "src/icons/appIcons";
+import { CommandPicker } from "src/modals/suggesterModals";
+import { selfDestruct, cMenuPopover } from "src/modals/cMenuModal";
+import addIcons, {
+  addFeatherIcons,
+  addRemixIcons,
+  addBoxIcons,
+} from "src/icons/customIcons";
+import { setMenuVisibility, setBottomValue } from "src/util/statusBarConstants";
 
 export default class cMenuPlugin extends Plugin {
+  app: App;
   settings: cMenuSettings;
-  plugin: cMenuPlugin;
   statusBarIcon: HTMLElement;
   cMenuBar: HTMLElement;
   modCommands: Command[] = [
@@ -106,6 +108,8 @@ export default class cMenuPlugin extends Plugin {
     await this.loadSettings();
     addIcons();
     addFeatherIcons(appIcons);
+    addRemixIcons(appIcons);
+    //addBoxIcons(appIcons);
     this.generateCommands();
     this.app.workspace.onLayoutReady(() => {
       setTimeout(() => {
@@ -210,8 +214,42 @@ export default class cMenuPlugin extends Plugin {
           const activeLeaf =
             this.app.workspace.getActiveViewOfType(MarkdownView);
           const view = activeLeaf;
+          const editor = view.editor;
+          const curserStart = editor.getCursor("from");
+          const curserEnd = editor.getCursor("to");
+          let char;
+          `${type["id"]}` == "editor:insert-embed"
+            ? (char = 3)
+            : `${type["id"]}` == "editor:insert-link"
+            ? (char = 2)
+            : `${type["id"]}` == "editor:insert-tag"
+            ? (char = 1)
+            : `${type["id"]}` == "editor:insert-wikilink"
+            ? (char = 3)
+            : `${type["id"]}` == "editor:toggle-bold"
+            ? (char = 2)
+            : `${type["id"]}` == "editor:toggle-italics"
+            ? (char = 1)
+            : `${type["id"]}` == "editor:toggle-strikethrough"
+            ? (char = 2)
+            : `${type["id"]}` == "editor:toggle-code"
+            ? (char = 1)
+            : `${type["id"]}` == "editor:toggle-blockquote"
+            ? (char = 2)
+            : `${type["id"]}` == "editor:toggle-bullet-list"
+            ? (char = 2)
+            : `${type["id"]}` == "editor:toggle-checklist-status"
+            ? (char = 4)
+            : `${type["id"]}` == "editor:toggle-comments"
+            ? (char = 2)
+            : `${type["id"]}` == "editor:toggle-highlight"
+            ? (char = 2)
+            : `${type["id"]}` == "editor:toggle-numbered-list"
+            ? (char = 3)
+            : (char = 2);
           //@ts-ignore
           this.app.commands.executeCommandById(`${type["id"]}`);
+          editor.setCursor(curserStart.line, curserEnd.ch + char);
           await wait(10);
           //@ts-ignore
           this.app.commands.executeCommandById("editor:focus");
@@ -225,7 +263,7 @@ export default class cMenuPlugin extends Plugin {
     this.statusBarIcon.addClass("cMenu-statusbar-button");
     setIcon(this.statusBarIcon, "cMenu");
 
-    this.registerDomEvent(this.statusBarIcon, "click", (e) => {
+    this.registerDomEvent(this.statusBarIcon, "click", () => {
       const statusBarRect =
         this.statusBarIcon.parentElement.getBoundingClientRect();
       const statusBarIconRect = this.statusBarIcon.getBoundingClientRect();
@@ -261,14 +299,17 @@ export default class cMenuPlugin extends Plugin {
       item.onClickEvent((e) => e.stopPropagation());
 
       new SliderComponent(item)
-        .setLimits(2, 12, 0.25)
+        .setLimits(2, 18, 0.25)
         .setValue(this.settings.cMenuBottomValue)
         .onChange(
           debounce(
             async (value) => {
               console.log(`%c${value}em`, "color: Violet");
               this.settings.cMenuBottomValue = value;
-              setBottomValue(this.settings.cMenuBottomValue);
+              setBottomValue(
+                this.settings.cMenuBottomValue,
+                this.settings.cMenuNumRows
+              );
               await this.saveSettings();
             },
             100,
@@ -278,14 +319,15 @@ export default class cMenuPlugin extends Plugin {
         .setDynamicTooltip();
 
       const buttonItem = menuDom.createDiv({ cls: "menu-item buttonitem" });
-      var addButton = new ButtonComponent(buttonItem);
-      var deleteButton = new ButtonComponent(buttonItem);
+      const addButton = new ButtonComponent(buttonItem);
+      const deleteButton = new ButtonComponent(buttonItem);
+      const refreshButton = new ButtonComponent(buttonItem);
       addButton
         .setIcon("cMenuAdd")
         .setClass("cMenuSettingsButton")
         .setClass("cMenuSettingsButtonAdd")
         .setClass("cMenuStatusButton")
-        .setTooltip("Add to cMenu")
+        .setTooltip("Add")
         .onClick(() => {
           new CommandPicker(this).open();
         });
@@ -294,16 +336,30 @@ export default class cMenuPlugin extends Plugin {
           .setIcon("cMenuDelete")
           .setClass("cMenuSettingsButton")
           .setClass("cMenuSettingsButtonDelete")
+          .setTooltip("Delete")
           .onClick(async () => {
             this.settings.menuCommands.remove(newCommand);
             await this.saveSettings();
+            setTimeout(() => {
+              dispatchEvent(new Event("cMenu-NewCommand"));
+            }, 100);
             console.log(
               `%cCommand '${newCommand.name}' was removed from cMenu`,
               "color: #989cab"
             );
           });
       });
-
+      refreshButton
+        .setIcon("cMenuReload")
+        .setClass("cMenuSettingsButton")
+        .setClass("cMenuSettingsButtonRefresh")
+        .setTooltip("Refresh")
+        .onClick(async () => {
+          setTimeout(() => {
+            dispatchEvent(new Event("cMenu-NewCommand"));
+          }, 100);
+          console.log(`%ccMenu refreshed`, "color: Violet");
+        });
       menu.showAtPosition({
         x: statusBarIconRect.right + 5,
         y: statusBarRect.top - 5,

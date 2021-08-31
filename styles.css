@@ -6,25 +6,24 @@ CMENU TOOLBAR
   width: auto;
   height: auto;
   padding: 3px;
-  bottom: 4.25em;
-  margin: 0 auto;
+  display: grid;
   user-select: none;
   border-radius: 6px;
   position: absolute;
+  transition: 300ms ease;
   min-width: fit-content;
   justify-content: space-around;
   z-index: var(--layer-status-bar);
   box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
   border: 1px solid var(--background-modifier-border);
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 #cMenuModalBar .cMenuCommandItem {
   margin: 2px;
   border: none;
+  display: flex;
   cursor: pointer;
   padding: 5px 6px;
-  display: flex;
   box-shadow: none;
   margin-left: 3px;
   margin-right: 3px;
@@ -41,7 +40,6 @@ CMENU TOOLBAR
 #cMenuModalBar button.cMenuCommandItem svg {
   width: 1.3em;
   height: 1.3em;
-  stroke-width: 2;
 }
 
 /*----------------------------------------------------------------
@@ -51,13 +49,19 @@ CMENU SETTINGS BUTTONS
 .modal.mod-settings
   button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonAdd,
 button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonAdd {
-  background-color: var(--interactive-accent-hover);
+  background-color: var(--interactive-accent);
 }
 
 .modal.mod-settings
   button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonDelete,
 button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonDelete {
   background-color: #989cab;
+}
+
+.modal.mod-settings
+  button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonRefresh,
+button:not(.mod-cta):not(.mod-warning).cMenuSettingsButton.cMenuSettingsButtonRefresh {
+  background-color: var(--text-accent);
 }
 
 button.cMenuSettingsButton {
@@ -72,16 +76,42 @@ button.cMenuSettingsButton {
 }
 
 /*----------------------------------------------------------------
+CMENU SETTING ITEMS
+----------------------------------------------------------------*/
+.setting-item.cMenuCommandItem:first-child {
+  padding-top: 18px;
+}
+
+.cMenuCommandItem {
+  cursor: grab;
+  padding: 18px 0 18px 0;
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+  cursor: grabbing;
+}
+
+.sortable-chosen {
+  cursor: grabbing;
+  padding: 18px 0 18px 18px;
+  box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
+  background-color: var(--background-primary);
+}
+
+.sortable-drag {
+  cursor: grabbing;
+  box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
+}
+
+.cMenuSettingsTabsContainer {
+  border-top: 1px solid var(--background-modifier-border);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+/*----------------------------------------------------------------
 CMENU CLASS CHANGES
 ----------------------------------------------------------------*/
-
-.cMenuFlex {
-  display: flex;
-}
-
-.cMenuGrid {
-  display: grid;
-}
 
 .cMenuGlassAesthetic {
   backdrop-filter: blur(8px);
@@ -97,14 +127,14 @@ CMENU ICONS
 ----------------------------------------------------------------*/
 
 .cMenuIconPick {
-  padding: 4px;
-  vertical-align: -0.25em;
+  line-height: normal;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
 .cMenuIconPick svg {
   width: 17px;
   height: 17px;
-  stroke-width: 2;
 }
 
 /*----------------------------------------------------------------
@@ -126,6 +156,22 @@ CMENU STATUS BAR MENU
   flex-direction: row;
 }
 
+.cMenu-statusbar-menu .menu-item.settings-item {
+  font-size: 12px;
+  text-align: center;
+  line-height: 1;
+  border-radius: 5px;
+  height: auto;
+  padding: 8px 5px 0px 5px;
+  margin: 0 auto;
+  width: fit-content;
+  color: var(--text-faint);
+}
+
+.cMenu-statusbar-menu .menu-item.settings-item .menu-item-title {
+  text-align: center;
+}
+
 .cMenu-statusbar-menu .menu-item:hover,
 .cMenu-statusbar-menu .menu-item .selected:hover,
 .cMenu-statusbar-menu .menu-item.selected:not(.is-disabled):not(.is-label) {
@@ -141,7 +187,9 @@ CMENU STATUS BAR MENU
 }
 
 .cMenu-statusbar-menu .menu-item.buttonitem {
-  display: flex;
+  padding-top: 10px;
+  padding-bottom: 4px;
+  height: fit-content;
 }
 
 .cMenu-statusbar-menu .menu-item.buttonitem button.cMenuSettingsButton {

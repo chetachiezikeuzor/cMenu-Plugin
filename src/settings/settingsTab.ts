@@ -1,72 +1,10 @@
-import { App, Setting, Command, PluginSettingTab } from "obsidian";
-import cMenuPlugin from "main";
-import { CommandPicker } from "src/modals";
-export const APPEND_METHODS = ["body", "workspace"];
-export const AESTHETIC_STYLES = ["glass", "default"];
-
-export interface cMenuSettings {
-  aestheticStyle: string;
-  menuCommands: Command[];
-  appendMethod: string;
-  shouldShowMenuOnSelect: boolean;
-  cMenuVisibility: boolean;
-  cMenuBottomValue: number;
-}
-
-export const DEFAULT_SETTINGS: cMenuSettings = {
-  aestheticStyle: "default",
-  menuCommands: [
-    {
-      id: "cMenu-plugin:editor:toggle-bold",
-      name: "cMenu: Toggle bold",
-      icon: "bold-glyph",
-    },
-    {
-      id: "cMenu-plugin:editor:toggle-italics",
-      name: "cMenu: Toggle italics",
-      icon: "italic-glyph",
-    },
-    {
-      id: "cMenu-plugin:editor:toggle-strikethrough",
-      name: "cMenu: Toggle strikethrough",
-      icon: "strikethrough-glyph",
-    },
-    {
-      id: "cMenu-plugin:underline",
-      name: "cMenu: Toggle underline",
-      icon: "underline-glyph",
-    },
-    {
-      id: "cMenu-plugin:superscript",
-      name: "cMenu: Toggle superscript",
-      icon: "superscript-glyph",
-    },
-    {
-      id: "cMenu-plugin:subscript",
-      name: "cMenu: Toggle subscript",
-      icon: "subscript-glyph",
-    },
-    {
-      id: "cMenu-plugin:editor:toggle-code",
-      name: "cMenu: Toggle code",
-      icon: "code-glyph",
-    },
-    {
-      id: "cMenu-plugin:codeblock",
-      name: "cMenu: Toggle codeblock",
-      icon: "codeblock-glyph",
-    },
-    {
-      id: "cMenu-plugin:editor:toggle-blockquote",
-      name: "cMenu: Toggle blockquote",
-      icon: "quote-glyph",
-    },
-  ],
-  appendMethod: "workspace",
-  shouldShowMenuOnSelect: false,
-  cMenuVisibility: true,
-  cMenuBottomValue: 4.25,
-};
+import type cMenuPlugin from "src/plugin/main";
+import { CommandPicker } from "src/modals/suggesterModals";
+import { App, Setting, PluginSettingTab } from "obsidian";
+import { APPEND_METHODS, AESTHETIC_STYLES } from "src/settings/settingsData";
+import { selfDestruct, cMenuPopover } from "src/modals/cMenuModal";
+import Sortable from "sortablejs";
+import { debounce } from "obsidian";
 
 export class cMenuSettingTab extends PluginSettingTab {
   plugin: cMenuPlugin;
@@ -76,6 +14,8 @@ export class cMenuSettingTab extends PluginSettingTab {
     super(app, plugin);
     this.plugin = plugin;
     addEventListener("cMenu-NewCommand", () => {
+      selfDestruct();
+      cMenuPopover(app, this.plugin.settings);
       this.display();
     });
   }
@@ -91,7 +31,9 @@ export class cMenuSettingTab extends PluginSettingTab {
     containerEl.createEl("h2", { text: "Plugin Settings" });
     new Setting(containerEl)
       .setName("Customize cMenu append method")
-      .setDesc("Choose where cMenu will append upon regeneration.")
+      .setDesc(
+        "Choose where cMenu will append upon regeneration. To see the change, hit the reload button in the status bar menu."
+      )
       .addDropdown((dropdown) => {
         let methods: Record<string, string> = {};
         APPEND_METHODS.map((method) => (methods[method] = method));
@@ -105,7 +47,9 @@ export class cMenuSettingTab extends PluginSettingTab {
       });
     new Setting(containerEl)
       .setName("Customize cMenu aesthetic")
-      .setDesc("Choose between a glass morphism and default style for cMenu.")
+      .setDesc(
+        "Choose between a glass morphism and default style for cMenu. To see the change, hit the reload button in the status bar menu."
+      )
       .addDropdown((dropdown) => {
         let aesthetics: Record<string, string> = {};
         AESTHETIC_STYLES.map(
@@ -120,6 +64,27 @@ export class cMenuSettingTab extends PluginSettingTab {
           });
       });
     new Setting(containerEl)
+      .setName("Customize cMenu columns")
+      .setDesc(
+        "Choose the number of columns per row to display on cMenu. To see the changes, hit the reload button in the status bar menu."
+      )
+      .addSlider((slider) => {
+        slider
+          .setLimits(1, 18, 1)
+          .setValue(this.plugin.settings.cMenuNumRows)
+          .onChange(
+            debounce(
+              async (value) => {
+                this.plugin.settings.cMenuNumRows = value;
+                await this.plugin.saveSettings();
+              },
+              100,
+              true
+            )
+          )
+          .setDynamicTooltip();
+      });
+    new Setting(containerEl)
       .setName("Customize cMenu commands")
       .setDesc(
         "Add a command from Obsidian's commands library to cMenu. By default, your commands are set to: Toggle bold, Toggle italics, Toggle strikethrough, cMenu: Toggle Underline, cMenu: Toggle Superscript, cMenu: Toggle Subscript, Toggle code, cMenu: Toggle codeblock, and Toggle blockquote."
@@ -127,18 +92,39 @@ export class cMenuSettingTab extends PluginSettingTab {
       .addButton((addButton) => {
         addButton
           .setIcon("cMenuAdd")
+          .setTooltip("Add")
           .setClass("cMenuSettingsButton")
           .setClass("cMenuSettingsButtonAdd")
           .onClick(() => {
             new CommandPicker(this.plugin).open();
           });
       });
-    this.plugin.settings.menuCommands.forEach((newCommand) => {
-      const setting = new Setting(containerEl)
+    const cMenuCommandsContainer = containerEl.createEl("div", {
+      cls: "cMenuSettingsTabsContainer",
+    });
+    Sortable.create(cMenuCommandsContainer, {
+      animation: 500,
+      ghostClass: "sortable-ghost",
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+      dragoverBubble: true,
+      easing: "cubic-bezier(1, 0, 0, 1)",
+      onSort: (command) => {
+        const arrayResult = this.plugin.settings.menuCommands;
+        const [removed] = arrayResult.splice(command.oldIndex, 1);
+        arrayResult.splice(command.newIndex, 0, removed);
+        this.plugin.saveSettings();
+        console.log(arrayResult);
+      },
+    });
+    this.plugin.settings.menuCommands.forEach((newCommand: any) => {
+      const setting = new Setting(cMenuCommandsContainer)
+        .setClass("cMenuCommandItem")
         .setName(newCommand.name)
         .addButton((deleteButton) => {
           deleteButton
             .setIcon("cMenuDelete")
+            .setTooltip("Delete")
             .setClass("cMenuSettingsButton")
             .setClass("cMenuSettingsButtonDelete")
             .onClick(async () => {
@@ -153,8 +139,7 @@ export class cMenuSettingTab extends PluginSettingTab {
         });
       setting.nameEl;
     });
-
-    const div = containerEl.createEl("div", {
+    const cDonationDiv = containerEl.createEl("div", {
       cls: "cDonationSection",
     });
 
@@ -165,15 +150,12 @@ export class cMenuSettingTab extends PluginSettingTab {
     );
     credit.appendText("Created with ❤️ by Chetachi");
     credit.setAttribute("style", "color: var(--text-muted)");
-    div.appendChild(donateText);
-    div.appendChild(credit);
+    cDonationDiv.appendChild(donateText);
+    cDonationDiv.appendChild(credit);
 
-    div.appendChild(
+    cDonationDiv.appendChild(
       createDonateButton("https://www.buymeacoffee.com/chetachi")
     );
-  }
-  save() {
-    this.plugin.saveSettings();
   }
 }
 

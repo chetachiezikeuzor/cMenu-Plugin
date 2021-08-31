@@ -1,6 +1,6 @@
 {
   "name": "cmenu",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "cMenu is a plugin that adds a minimal text editor modal for a smoother writing/editing experience ✍🏽.",
   "main": "main.js",
   "repository": "https://github.com/chetachiezikeuzor/cMenu-Plugin",
@@ -9,30 +9,34 @@
     "build": "rollup --config rollup.config.js --environment BUILD:production"
   },
   "keywords": [],
-  "author": "",
+  "author": "Chetachi",
   "license": "MPL-2.0",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@rollup/plugin-typescript": "^8.2.1",
-    "@tsconfig/svelte": "^2.0.1",
     "@types/feather-icons": "^4.7.0",
     "@types/node": "^14.17.6",
+    "@types/react-dom": "^17.0.9",
+    "@types/sortablejs": "^1.10.7",
     "obsidian": "^0.12.11",
-    "rollup": "^2.54.0",
-    "svelte": "^3.40.3",
-    "svelte-check": "^1.6.0",
-    "svelte-preprocess": "^4.8.0",
+    "rollup": "^2.56.3",
+    "rollup-watch": "^4.3.1",
     "tslib": "^2.2.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.2",
+    "typings": "^2.1.1"
   },
   "moduleFileExtensions": [
     "js",
-    "ts",
-    "svelte"
+    "ts"
   ],
   "dependencies": {
     "feather-icons": "^4.28.0",
-    "svelte": "^3.42.3"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-dom-server": "0.0.5",
+    "react-icons": "^4.2.0",
+    "remixicon": "^2.5.0",
+    "sortablejs": "^1.14.0"
   }
 }
