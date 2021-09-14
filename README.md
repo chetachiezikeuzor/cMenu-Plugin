@@ -190,17 +190,18 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
-### [1.1.1](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.1) - Sep 14, 2021
+### [1.1.2](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.2) - Sep 14, 2021
 
 ##### Added
 
 - Added [remix icons](https://remixicon.com) for command customization (makes it a bit slow :/)
-- Added reload function (button to execute and exceution after add/delete)
-- Added custom columns settings
+- Added reload function (button to execute and execution after add/delete)
+- Added custom columns setting
 - Added command reordering in settings
   ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/reorder_commands.gif)
 - Added command to hide/show cMenu
   ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/hide_show_command.gif)
+- Added [remove tags](https://github.com/chetachiezikeuzor/cMenu-Plugin/pull/23) functionality
 
 ---
 
