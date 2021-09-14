@@ -122,6 +122,23 @@ export default class cMenuPlugin extends Plugin {
   }
 
   generateCommands() {
+    //Hide-show menu
+    this.addCommand({
+      id: "hide-show-menu",
+      name: "Hide/show ",
+      icon: "cMenu",
+      callback: async () => {
+        this.settings.cMenuVisibility = !this.settings.cMenuVisibility;
+        this.settings.cMenuVisibility == true
+          ? setTimeout(() => {
+              dispatchEvent(new Event("cMenu-NewCommand"));
+            }, 100)
+          : setMenuVisibility(this.settings.cMenuVisibility);
+        selfDestruct();
+        await this.saveSettings();
+      },
+    });
+
     const applyCommand = (
       prefix: string,
       selectedText: string,
@@ -165,7 +182,7 @@ export default class cMenuPlugin extends Plugin {
         line: 1,
       },
     };
-
+    // Add new commands
     Object.keys(commandsMap).forEach((type) => {
       this.addCommand({
         id: `${type}`,
@@ -203,7 +220,7 @@ export default class cMenuPlugin extends Plugin {
         },
       });
     });
-
+    // Enhance editor commands
     this.modCommands.forEach((type) => {
       this.addCommand({
         id: `${type["id"]}`,
@@ -248,7 +265,7 @@ export default class cMenuPlugin extends Plugin {
             : (char = 2);
           //@ts-ignore
           this.app.commands.executeCommandById(`${type["id"]}`);
-          editor.setCursor(curserStart.line, curserEnd.ch + char);
+          editor.setCursor(curserEnd.line, curserEnd.ch + char);
           await wait(10);
           //@ts-ignore
           this.app.commands.executeCommandById("editor:focus");
@@ -278,7 +295,12 @@ export default class cMenuPlugin extends Plugin {
         const toggle = async () => {
           this.settings.cMenuVisibility = !this.settings.cMenuVisibility;
           toggleComponent.setValue(this.settings.cMenuVisibility);
-          setMenuVisibility(this.settings.cMenuVisibility);
+          this.settings.cMenuVisibility == true
+            ? setTimeout(() => {
+                dispatchEvent(new Event("cMenu-NewCommand"));
+              }, 100)
+            : setMenuVisibility(this.settings.cMenuVisibility);
+          selfDestruct();
           await this.saveSettings();
         };
 
@@ -373,7 +395,9 @@ export default class cMenuPlugin extends Plugin {
   }
 
   handlecMenu = (): void => {
-    cMenuPopover(this.app, this.settings);
+    this.settings.cMenuVisibility == true
+      ? cMenuPopover(this.app, this.settings)
+      : false;
   };
 
   async loadSettings() {

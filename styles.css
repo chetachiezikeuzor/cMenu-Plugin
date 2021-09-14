@@ -10,7 +10,7 @@ CMENU TOOLBAR
   user-select: none;
   border-radius: 6px;
   position: absolute;
-  transition: 300ms ease;
+  transition: 200ms ease;
   min-width: fit-content;
   justify-content: space-around;
   z-index: var(--layer-status-bar);
@@ -87,6 +87,15 @@ CMENU SETTING ITEMS
   padding: 18px 0 18px 0;
 }
 
+.sortable-fallback {
+  cursor: grabbing;
+  box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
+}
+
+.sortable-grab {
+  cursor: grabbing !important;
+}
+
 .sortable-ghost {
   opacity: 0.4;
   cursor: grabbing;
@@ -95,7 +104,6 @@ CMENU SETTING ITEMS
 .sortable-chosen {
   cursor: grabbing;
   padding: 18px 0 18px 18px;
-  box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
   background-color: var(--background-primary);
 }
 
