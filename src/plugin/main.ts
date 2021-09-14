@@ -241,41 +241,9 @@ export default class cMenuPlugin extends Plugin {
             this.app.workspace.getActiveViewOfType(MarkdownView);
           const view = activeLeaf;
           const editor = view.editor;
-          const curserStart = editor.getCursor("from");
-          const curserEnd = editor.getCursor("to");
-          let char;
-          `${type["id"]}` == "editor:insert-embed"
-            ? (char = 3)
-            : `${type["id"]}` == "editor:insert-link"
-            ? (char = 2)
-            : `${type["id"]}` == "editor:insert-tag"
-            ? (char = 1)
-            : `${type["id"]}` == "editor:insert-wikilink"
-            ? (char = 3)
-            : `${type["id"]}` == "editor:toggle-bold"
-            ? (char = 2)
-            : `${type["id"]}` == "editor:toggle-italics"
-            ? (char = 1)
-            : `${type["id"]}` == "editor:toggle-strikethrough"
-            ? (char = 2)
-            : `${type["id"]}` == "editor:toggle-code"
-            ? (char = 1)
-            : `${type["id"]}` == "editor:toggle-blockquote"
-            ? (char = 2)
-            : `${type["id"]}` == "editor:toggle-bullet-list"
-            ? (char = 2)
-            : `${type["id"]}` == "editor:toggle-checklist-status"
-            ? (char = 4)
-            : `${type["id"]}` == "editor:toggle-comments"
-            ? (char = 2)
-            : `${type["id"]}` == "editor:toggle-highlight"
-            ? (char = 2)
-            : `${type["id"]}` == "editor:toggle-numbered-list"
-            ? (char = 3)
-            : (char = 2);
           //@ts-ignore
           this.app.commands.executeCommandById(`${type["id"]}`);
-          editor.setCursor(curserEnd.line, curserEnd.ch + char);
+          editor.setCursor(editor.getCursor("to"));
           await wait(10);
           //@ts-ignore
           this.app.commands.executeCommandById("editor:focus");
