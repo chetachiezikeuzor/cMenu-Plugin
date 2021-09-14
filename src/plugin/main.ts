@@ -4,6 +4,7 @@ import {
   Command,
   setIcon,
   debounce,
+  Editor,
   MarkdownView,
   SliderComponent,
   ToggleComponent,
@@ -140,46 +141,67 @@ export default class cMenuPlugin extends Plugin {
     });
 
     const applyCommand = (
-      prefix: string,
-      selectedText: string,
-      suffix: string
+      command: commandPlot,
+      editor: Editor,
     ) => {
-      suffix = suffix || prefix;
-      return `${prefix}${selectedText}${suffix}`;
+      const selectedText = editor.getSelection();
+      const curserStart = editor.getCursor("from");
+      const curserEnd = editor.getCursor("to");
+      const prefix = command.prefix;
+      const suffix = command.suffix|| prefix;
+      const setCursor = (mode: number) => {
+        editor.setCursor(curserStart.line + command.line * mode, curserEnd.ch + command.char * mode);
+      };
+      const preStart = { line: curserStart.line-command.line, ch: curserStart.ch - prefix.length };
+      const pre = editor.getRange(preStart, curserStart);
+
+      if (pre == prefix.trimStart()) {
+        const sufEnd ={ line: curserStart.line+command.line, ch: curserEnd.ch + suffix.length };
+        const suf = editor.getRange(curserEnd, sufEnd);
+        if (suf == suffix.trimEnd()) {
+          editor.replaceRange(selectedText, preStart,sufEnd); // codeblock leave blank lines 
+          return setCursor(-1);
+        }
+      }
+      editor.replaceSelection(`${prefix}${selectedText}${suffix}`);
+      return setCursor(1);
+    };
+
+    type commandPlot = {
+      char: number;
+      line: number;
+      prefix: string;
+      suffix: string;
     };
 
     type commandsPlot = {
-      [key: string]: {
-        replacement: (selectedText: string) => string;
-        char: number;
-        line: number;
-      };
+      [key: string]: commandPlot;
     };
 
     const commandsMap: commandsPlot = {
       underline: {
-        replacement: (selectedText) =>
-          applyCommand("<u>", selectedText, "</u>"),
         char: 3,
         line: 0,
+        prefix: "<u>",
+        suffix: "</u>",
       },
       superscript: {
-        replacement: (selectedText) =>
-          applyCommand("<sup>", selectedText, "</sup>"),
         char: 5,
         line: 0,
+        prefix: "<sup>",
+        suffix: "</sup>",
       },
       subscript: {
-        replacement: (selectedText) =>
-          applyCommand("<sub>", selectedText, "</sub>"),
         char: 5,
         line: 0,
+        prefix: "<sub>",
+        suffix: "</sub>",
       },
       codeblock: {
-        replacement: (selectedText) =>
-          applyCommand("\n```\n", selectedText, "\n```\n"),
         char: 5,
         line: 1,
+        prefix: "\n```\n",
+        suffix: "\n```\n",
       },
     };
     // Add new commands
@@ -194,25 +216,7 @@ export default class cMenuPlugin extends Plugin {
           if (activeLeaf) {
             const view = activeLeaf;
             const editor = view.editor;
-            const selection = editor.getSelection();
-            const curserStart = editor.getCursor("from");
-            const curserEnd = editor.getCursor("to");
-            if (selection) {
-              editor.replaceSelection(commandsMap[type].replacement(selection));
-              editor.setCursor(
-                curserStart.line + commandsMap[type].line,
-                curserEnd.ch + commandsMap[type].char
-              );
-            } else {
-              editor.replaceRange(
-                commandsMap[type].replacement(selection),
-                curserStart
-              );
-              editor.setCursor(
-                curserStart.line + commandsMap[type].line,
-                curserEnd.ch + commandsMap[type].char
-              );
-            }
+            applyCommand(commandsMap[type], editor);
             await wait(10);
             //@ts-ignore
             this.app.commands.executeCommandById("editor:focus");
