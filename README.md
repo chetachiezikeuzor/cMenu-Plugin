@@ -194,8 +194,6 @@ This plugin is now available in the community plugin store. You can install it f
 
 ##### Added
 
-- Added new status bar menu for extra cMenu setting: Hide/Show buttons, Bottom value change
-  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20status%20bar%20menu.gif)
 - Added [remix icons](https://remixicon.com) for command customization (makes it a bit slow :/)
 - Added reload function (button to execute and exceution after add/delete)
 - Added custom columns settings
