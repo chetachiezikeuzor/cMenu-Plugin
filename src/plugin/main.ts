@@ -140,26 +140,32 @@ export default class cMenuPlugin extends Plugin {
       },
     });
 
-    const applyCommand = (
-      command: commandPlot,
-      editor: Editor,
-    ) => {
+    const applyCommand = (command: commandPlot, editor: Editor) => {
       const selectedText = editor.getSelection();
       const curserStart = editor.getCursor("from");
       const curserEnd = editor.getCursor("to");
       const prefix = command.prefix;
-      const suffix = command.suffix|| prefix;
+      const suffix = command.suffix || prefix;
       const setCursor = (mode: number) => {
-        editor.setCursor(curserStart.line + command.line * mode, curserEnd.ch + command.char * mode);
+        editor.setCursor(
+          curserStart.line + command.line * mode,
+          curserEnd.ch + command.char * mode
+        );
       };
-      const preStart = { line: curserStart.line-command.line, ch: curserStart.ch - prefix.length };
+      const preStart = {
+        line: curserStart.line - command.line,
+        ch: curserStart.ch - prefix.length,
+      };
       const pre = editor.getRange(preStart, curserStart);
 
       if (pre == prefix.trimStart()) {
-        const sufEnd ={ line: curserStart.line+command.line, ch: curserEnd.ch + suffix.length };
+        const sufEnd = {
+          line: curserStart.line + command.line,
+          ch: curserEnd.ch + suffix.length,
+        };
         const suf = editor.getRange(curserEnd, sufEnd);
         if (suf == suffix.trimEnd()) {
-          editor.replaceRange(selectedText, preStart,sufEnd); // codeblock leave blank lines 
+          editor.replaceRange(selectedText, preStart, sufEnd); // codeblock leave blank lines
           return setCursor(-1);
         }
       }
