@@ -190,6 +190,22 @@ This plugin is now available in the community plugin store. You can install it f
 
 ---
 
+### [1.1.1](https://github.com/chetachiezikeuzor/cMenu-Plugin/releases/tag/1.1.1) - Sep 14, 2021
+
+##### Added
+
+- Added new status bar menu for extra cMenu setting: Hide/Show buttons, Bottom value change
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/cMenu%20status%20bar%20menu.gif)
+- Added [remix icons](https://remixicon.com) for command customization (makes it a bit slow :/)
+- Added reload function (button to execute and exceution after add/delete)
+- Added custom columns settings
+- Added command reordering in settings
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/reorder_commands.gif)
+- Added command to hide/show cMenu
+  ![](https://raw.githubusercontent.com/chetachiezikeuzor/cMenu-Plugin/master/assets/hide_show_command.gif)
+
+---
+
 ## Checklist
 
 - [x] Glassmorphism setting
@@ -202,14 +218,14 @@ This plugin is now available in the community plugin store. You can install it f
   - [x] Maintain focus in editor
 - [x] Change cMenu [bottom value](https://www.reddit.com/r/ObsidianMD/comments/owlaaf/new_obsidian_plugin_cmenu/h8vkn0v?utm_source=share&utm_medium=web2x&context=3)
 - [x] [Hide/show](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/10#issue-971519914) cMenu
-- [ ] Add more command icons (Remix Icons)
-- [ ] Custom cMenu columns
-  - [ ] Setting to customize cMenu columns (control number of command buttons per row on cMenu)
-- [ ] Reload cMenu
-  - [ ] Add reload after new command added and command deletion functions.
-  - [ ] Add general reload button (runs reload function)
+- [x] Add more command icons (Remix Icons)
+- [x] Custom cMenu columns
+  - [x] Setting to customize cMenu columns (control number of command buttons per row on cMenu)
+- [x] Reload cMenu
+  - [x] Add reload after new command added and command deletion functions.
+  - [x] Add general reload button (runs reload function)
 - [ ] Identify if text has been [selected](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/11#issuecomment-901091701)
-- [ ] Easy command button [reordering](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/9#issue-969667944)
+- [x] Easy command button [reordering](https://github.com/chetachiezikeuzor/cMenu-Plugin/issues/9#issue-969667944)
 - [ ] cMenu workspaces/nested menu
 - [ ] Follow the cursor setting
   - [ ] Setting to toggle for cMenu to follow mouse cursor
