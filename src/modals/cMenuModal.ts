@@ -44,6 +44,34 @@ export function cMenuPopover(app: App, settings: cMenuSettings): void {
             app.commands.executeCommandById(item.id);
           });
       });
+      document.addEventListener("selectionchange", function (event) {
+        setTimeout(async () => {
+          const activeLeaf = app.workspace.getActiveViewOfType(MarkdownView);
+          if (activeLeaf) {
+            cMenu.style.visibility = activeLeaf.editor.somethingSelected() ? "visible" : "hidden";
+            const selection = window.getSelection();
+            // getCientRects returns all the positioning information we need
+            const selectionContainer = selection.getRangeAt(0).commonAncestorContainer as HTMLElement;
+            const rect = selectionContainer.getClientRects()[0]
+
+            cMenu.style.height = `${cMenu.offsetHeight}px`;
+            // TODO: parents are different, position is error.
+            cMenu.style.left = `${rect.right - cMenu.offsetWidth * 1.5}px`;
+            if (rect.bottom + cMenu.offsetHeight < document.body.clientHeight) {
+              cMenu.style.top = `${rect.bottom}px`;
+            } else {
+              cMenu.style.top = `${rect.top - cMenu.offsetHeight * 1.5}px`;
+            }
+            // after cancel select
+            let timmer = setInterval(() => {
+              if (!activeLeaf.editor.somethingSelected()) {
+                cMenu.style.visibility = "hidden";
+                clearInterval(timmer);
+              };
+            }, 100);
+          }
+        }, 10);
+      })
     };
     let Markdown = app.workspace.getActiveViewOfType(MarkdownView);
     if (Markdown) {
