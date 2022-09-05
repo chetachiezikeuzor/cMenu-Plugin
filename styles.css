@@ -232,3 +232,27 @@ CMENU SUPPORT
   text-align: center;
   color: var(--text-normal);
 }
+
+
+/*tiny style*/
+#cMenuModalBar.cMenuTinyAesthetic {
+  align-items: center;
+  justify-items: center;  
+ 
+ }
+ #cMenuModalBar.cMenuTinyAesthetic .cMenuCommandItem {
+   margin: auto;
+   padding: 0px;
+   box-shadow: none;
+   margin-left: 4px;
+   margin-right: 0px;
+   position: relative; 
+   background-color:transparent;
+     backdrop-filter: blur(8px);
+   -webkit-backdrop-filter: blur(8px);
+ 
+ }
+ #cMenuModalBar.cMenuTinyAesthetic .cMenuCommandItem svg{
+     width: 1em;
+     height: 1em;
+ }
