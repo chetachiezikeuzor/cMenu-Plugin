@@ -1,9 +1,11 @@
 import type { Command } from "obsidian";
 export const APPEND_METHODS = ["body", "workspace"];
-export const AESTHETIC_STYLES = ["glass", "default"];
+export const AESTHETIC_STYLES = ["glass", "default","tiny"];
+export const POSITION_STYLES = ["fixed", "following"];
 
 export interface cMenuSettings {
   aestheticStyle: string;
+  positionStyle: string;
   menuCommands: Command[];
   appendMethod: string;
   shouldShowMenuOnSelect: boolean;
@@ -14,6 +16,7 @@ export interface cMenuSettings {
 
 export const DEFAULT_SETTINGS: cMenuSettings = {
   aestheticStyle: "default",
+  positionStyle:"fixed",
   menuCommands: [
     {
       id: "cmenu-plugin:editor:toggle-bold",

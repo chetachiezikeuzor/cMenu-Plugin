@@ -1,7 +1,7 @@
 import type cMenuPlugin from "src/plugin/main";
 import { CommandPicker } from "src/modals/suggesterModals";
 import { App, Setting, PluginSettingTab } from "obsidian";
-import { APPEND_METHODS, AESTHETIC_STYLES } from "src/settings/settingsData";
+import { APPEND_METHODS, AESTHETIC_STYLES, POSITION_STYLES } from "src/settings/settingsData";
 import { selfDestruct, cMenuPopover } from "src/modals/cMenuModal";
 import Sortable from "sortablejs";
 import { debounce } from "obsidian";
@@ -58,11 +58,26 @@ export class cMenuSettingTab extends PluginSettingTab {
         dropdown.addOptions(aesthetics);
         dropdown
           .setValue(this.plugin.settings.aestheticStyle)
-          .onChange((aestheticStyle) => {
+          .onChange((aestheticStyle: string) => {
             this.plugin.settings.aestheticStyle = aestheticStyle;
             this.plugin.saveSettings();
           });
       });
+    new Setting(containerEl)
+      .setName("cMenu posotion")
+      .setDesc("Choose between fixed position or cursor following mode.")
+      .addDropdown((dropdown) => {
+      let posotions: Record<string, string> = {}; 
+      POSITION_STYLES.map((posotion: string) => (posotions[posotion] = posotion));
+      dropdown.addOptions(posotions);
+      dropdown
+          .setValue(this.plugin.settings.positionStyle)
+          .onChange((positionStyle: string) => {
+          this.plugin.settings.positionStyle = positionStyle;
+          this.plugin.saveSettings();
+          dispatchEvent(new Event("cMenu-NewCommand"));
+      });
+  });
     new Setting(containerEl)
       .setName("cMenu columns")
       .setDesc(
@@ -74,7 +89,7 @@ export class cMenuSettingTab extends PluginSettingTab {
           .setValue(this.plugin.settings.cMenuNumRows)
           .onChange(
             debounce(
-              async (value) => {
+              async (value:number) => {
                 this.plugin.settings.cMenuNumRows = value;
                 await this.plugin.saveSettings();
               },
